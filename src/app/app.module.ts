@@ -10,6 +10,7 @@ import { BreadcrumbsComponent } from './shared/breadcrumbs/breadcrumbs.component
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { AppRoutingModule } from './app-routing.module';
+import { PagesComponent } from './pages/pages.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { AppRoutingModule } from './app-routing.module';
     DashboardComponent,
     BreadcrumbsComponent,
     SidebarComponent,
-    HeaderComponent
+    HeaderComponent,
+    PagesComponent
   ],
   imports: [
     BrowserModule,
