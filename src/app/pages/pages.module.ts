@@ -6,17 +6,20 @@ import { RouterModule } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PagesComponent } from './pages.component';
 import { SharedModule } from '../shared/shared.module';
+import { ProyectoComponent } from './proyecto/proyecto.component';
 
 
 
 @NgModule({
   declarations: [
     DashboardComponent,
-    PagesComponent
+    PagesComponent,
+    ProyectoComponent
   ],
   exports: [
     DashboardComponent,
-    PagesComponent
+    PagesComponent,
+    ProyectoComponent
   ],
   imports: [
     CommonModule,
