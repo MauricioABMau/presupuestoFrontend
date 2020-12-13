@@ -13,6 +13,7 @@ import { ItemComponent } from './item/item.component';
 import { EstimacionHerramientaComponent } from './estimacion-herramienta/estimacion-herramienta.component';
 import { EstimacionManoObraComponent } from './estimacion-mano-obra/estimacion-mano-obra.component';
 import { EstimacionMaterialComponent } from './estimacion-material/estimacion-material.component';
+import { AccountSettingsComponent } from './account-settings/account-settings.component';
 
 
 
@@ -26,7 +27,8 @@ import { EstimacionMaterialComponent } from './estimacion-material/estimacion-ma
     ItemComponent,
     EstimacionHerramientaComponent,
     EstimacionManoObraComponent,
-    EstimacionMaterialComponent
+    EstimacionMaterialComponent,
+    AccountSettingsComponent
   ],
   exports: [
     DashboardComponent,
@@ -37,7 +39,8 @@ import { EstimacionMaterialComponent } from './estimacion-material/estimacion-ma
     ItemComponent,
     EstimacionHerramientaComponent,
     EstimacionManoObraComponent,
-    EstimacionMaterialComponent
+    EstimacionMaterialComponent,
+    AccountSettingsComponent
   ],
   imports: [
     CommonModule,

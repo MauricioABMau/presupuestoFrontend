@@ -10,6 +10,7 @@ import { ItemComponent } from './item/item.component';
 import { EstimacionHerramientaComponent } from './estimacion-herramienta/estimacion-herramienta.component';
 import { EstimacionManoObraComponent } from './estimacion-mano-obra/estimacion-mano-obra.component';
 import { EstimacionMaterialComponent } from './estimacion-material/estimacion-material.component';
+import { AccountSettingsComponent } from './account-settings/account-settings.component';
 
 const routes: Routes = [
     {
@@ -24,6 +25,7 @@ const routes: Routes = [
             {path: 'estimacionHerramienta', component: EstimacionHerramientaComponent},
             {path: 'estimacionManoObra', component: EstimacionManoObraComponent},
             {path: 'estimacionMaterial', component: EstimacionMaterialComponent},
+            {path: 'account-settings', component: AccountSettingsComponent},
         ]        
     },
 ];
