@@ -34,18 +34,20 @@ Login register and recover password Page
 ******************/
 
 .login-register {
-    background-size: cover;
+    background-size: contain;
     background-repeat: no-repeat;
-    background-position: center center;
+    background-position: center;
     height: 100%;
     width: 100%;
-    padding: 10% 0;
+    padding: 0;
     position: fixed;
 }
 
 .login-box {
+    overflow: scroll;
+    height: 0px;
     width: 400px;
-    margin: 0 auto;
+    padding: 0;
 }
 
 .login-box .footer {
@@ -54,10 +56,11 @@ Login register and recover password Page
     right: 0px;
 }
 
-.login-box .social {
+
+/* .login-box .social {
     display: block;
     margin-bottom: 30px;
-}
+} */
 
 #recoverform {
     display: none;

@@ -34,7 +34,7 @@ Login register and recover password Page
 ******************/
 
 .login-register {
-    background-size: cover;
+    background-size: contain;
     background-repeat: no-repeat;
     background-position: center center;
     height: 100%;
@@ -44,8 +44,9 @@ Login register and recover password Page
 }
 
 .login-box {
+    overflow: scroll;
     width: 400px;
-    margin: 0 auto;
+    margin: 0;
 }
 
 .login-box .footer {

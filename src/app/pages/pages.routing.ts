@@ -1,6 +1,8 @@
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 
+import { AuthGuard } from '../guards/auth.guard';
+
 import { PagesComponent } from './pages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProyectoComponent } from './proyecto/proyecto.component';
@@ -11,11 +13,11 @@ import { EstimacionHerramientaComponent } from './estimacion-herramienta/estimac
 import { EstimacionManoObraComponent } from './estimacion-mano-obra/estimacion-mano-obra.component';
 import { EstimacionMaterialComponent } from './estimacion-material/estimacion-material.component';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
-
 const routes: Routes = [
     {
         path: 'dashboard', 
         component: PagesComponent,
+        canActivate: [AuthGuard],
         children: [
             {path: '', component: DashboardComponent, data: {titulo: 'Dashboard', subtitulo: 'Dashboard'}},
             {path: 'proyecto', component: ProyectoComponent, data: {titulo: 'Dashboard', subtitulo: 'Proyecto'} },
