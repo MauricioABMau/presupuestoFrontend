@@ -14,6 +14,8 @@ import { EstimacionHerramientaComponent } from './estimacion-herramienta/estimac
 import { EstimacionManoObraComponent } from './estimacion-mano-obra/estimacion-mano-obra.component';
 import { EstimacionMaterialComponent } from './estimacion-material/estimacion-material.component';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
+import { PerfilComponent } from './perfil/perfil.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -28,7 +30,8 @@ import { AccountSettingsComponent } from './account-settings/account-settings.co
     EstimacionHerramientaComponent,
     EstimacionManoObraComponent,
     EstimacionMaterialComponent,
-    AccountSettingsComponent
+    AccountSettingsComponent,
+    PerfilComponent
   ],
   exports: [
     DashboardComponent,
@@ -44,6 +47,8 @@ import { AccountSettingsComponent } from './account-settings/account-settings.co
   ],
   imports: [
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     SharedModule,
     RouterModule
   ] 

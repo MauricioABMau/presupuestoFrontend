@@ -13,6 +13,7 @@ import { EstimacionHerramientaComponent } from './estimacion-herramienta/estimac
 import { EstimacionManoObraComponent } from './estimacion-mano-obra/estimacion-mano-obra.component';
 import { EstimacionMaterialComponent } from './estimacion-material/estimacion-material.component';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
+import { PerfilComponent } from './perfil/perfil.component';
 const routes: Routes = [
     {
         path: 'dashboard', 
@@ -28,6 +29,7 @@ const routes: Routes = [
             {path: 'estimacionManoObra', component: EstimacionManoObraComponent, data: {titulo: 'Item', subtitulo: 'Mano de Obra'} },
             {path: 'estimacionMaterial', component: EstimacionMaterialComponent, data: {titulo: 'Item', subtitulo: 'Material'} },
             {path: 'account-settings', component: AccountSettingsComponent, data: {titulo: 'Dashboard', subtitulo: 'Ajustes de tema'} },
+            {path: 'perfil', component: PerfilComponent, data: {titulo: 'Perfil de usuario'} },
         ]        
     },
 ];
