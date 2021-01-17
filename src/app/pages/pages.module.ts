@@ -16,6 +16,8 @@ import { EstimacionMaterialComponent } from './estimacion-material/estimacion-ma
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UsuarioComponent } from './usuario/usuario.component';
+import { ComponentsModule } from '../components/modal-imagen/components.module';
 
 
 
@@ -31,7 +33,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     EstimacionManoObraComponent,
     EstimacionMaterialComponent,
     AccountSettingsComponent,
-    PerfilComponent
+    PerfilComponent,
+    UsuarioComponent
   ],
   exports: [
     DashboardComponent,
@@ -50,7 +53,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule,
     SharedModule,
-    RouterModule
+    RouterModule,
+    ComponentsModule
   ] 
 })
 export class PagesModule { }

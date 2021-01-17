@@ -8,6 +8,8 @@ import { environment } from '../../environments/environment';
 
 import { RegisterForm } from '../interfaces/register.form.interface';
 import { LoginForm } from '../interfaces/login-form.interface';
+import { CargarUsuario } from '../interfaces/cargar-usuario.interface';
+
 import { Usuario } from '../models/usuario.model';
 
 const base_url = environment.base_url;
@@ -33,6 +35,14 @@ export class UsuarioService {
 
   get uid(): string {
     return this.usuario.id || '';
+  }
+
+  get headers() {
+    return {
+      headers: {
+        'x-token': this.token
+      }
+    }
   }
 
   googleInit() {
@@ -89,15 +99,11 @@ export class UsuarioService {
   actualizarPerfil(data: { email: string, nombre: string, rol: string, estado: boolean, apellido: string}) {
     data = {
       ...data,
-      rol: "user",
+      rol: "",
       estado: true,
-      apellido: "apa",
+      apellido: "",
     }
-    return this.http.put(`${base_url}/usuario/${this.uid}`, data, {
-      headers: {
-        'x-token': this.token
-      }
-    })
+    return this.http.put(`${base_url}/usuario/${this.uid}`, data, this.headers)
   }
   
   login(formData: LoginForm) {
@@ -116,5 +122,30 @@ export class UsuarioService {
         localStorage.setItem('token', resp.token)
       })
     )
+  }
+
+  cargarUsuarios(desde: number =0) {
+    
+    const url = `${base_url}/usuario?desde=${desde}`;
+    return this.http.get<CargarUsuario>(url, this.headers)
+    .pipe(
+      map(resp => {
+        const usuarios = resp.usuarios.map( user => new Usuario(user.nombre, user.apellido, user.email, user.estado, '', user.google, user.imagen, user.rol, user.id))
+        return {
+          total: resp.total,
+          usuarios
+        };
+      })
+    )
+  }
+  
+  eliminarUsuario(usuario: Usuario) {
+    const url = `${base_url}/usuario/${usuario.id}`;
+    return this.http.delete(url, this.headers);
+  }
+
+
+  guardarUsuario(usuario: Usuario) {
+    return this.http.put(`${base_url}/usuario/${usuario.id}`, usuario, this.headers);
   }
 }

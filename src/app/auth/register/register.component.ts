@@ -15,11 +15,14 @@ export class RegisterComponent implements OnInit {
   public formSubmitted = false;
 
   public registerForm = this.fb.group({
+    //borrar
+
     nombre: ['mau', [Validators.required, Validators.minLength(3)]],
     apellido: ['apa', [Validators.required, Validators.minLength(3)]],
     email: ['mau2@gmail.com', [Validators.required, Validators.email]],
     password: ['123456', Validators.required],
     password2: ['123456', Validators.required],
+    imagen: [null],
     termino: [false, Validators.required],
 
   }, {

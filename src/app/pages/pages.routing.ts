@@ -14,6 +14,7 @@ import { EstimacionManoObraComponent } from './estimacion-mano-obra/estimacion-m
 import { EstimacionMaterialComponent } from './estimacion-material/estimacion-material.component';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { PerfilComponent } from './perfil/perfil.component';
+import { UsuarioComponent } from './usuario/usuario.component';
 const routes: Routes = [
     {
         path: 'dashboard', 
@@ -30,6 +31,7 @@ const routes: Routes = [
             {path: 'estimacionMaterial', component: EstimacionMaterialComponent, data: {titulo: 'Item', subtitulo: 'Material'} },
             {path: 'account-settings', component: AccountSettingsComponent, data: {titulo: 'Dashboard', subtitulo: 'Ajustes de tema'} },
             {path: 'perfil', component: PerfilComponent, data: {titulo: 'Perfil de usuario'} },
+            {path: 'usuario', component: UsuarioComponent, data: {titulo: 'Usuarios'} },
         ]        
     },
 ];

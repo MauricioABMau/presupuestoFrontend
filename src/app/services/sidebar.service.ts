@@ -13,11 +13,12 @@ export class SidebarService {
         {titulo: 'Main', url: '/'},
         {titulo: 'proyecto', url: 'proyecto'},
         {titulo: 'item', url: 'item'},
+        {titulo: 'usuario', url: 'usuario'},
       ]
     },
     {
       titulo: 'Proyecto',
-      icono: 'mdi mdi-gauge',
+      icono: 'mdi mdi-folder-lock-open',
       submenu: [
         {titulo: 'presupuesto', url: 'presupuesto'},
         {titulo: 'precioUnitario', url: 'precioUnitario'},
@@ -25,7 +26,7 @@ export class SidebarService {
     },
     {
       titulo: 'Item',
-      icono: 'mdi mdi-gauge',
+      icono: 'mdi mdi-folder-lock-open',
       submenu: [
         {titulo: 'estimacionHerramienta', url: 'estimacionHerramienta'},
         {titulo: 'estimacionManoObra', url: 'estimacionManoObra'},
