@@ -3,7 +3,7 @@
         <div class="card">
             <div class="card-body">
 
-                <input type="text" class="form-control" placeholder="Buscar items..." #txtTermino>
+                <input type="text" class="form-control" placeholder="Buscar presupuesto..." #txtTermino>
 
             </div>
         </div>
@@ -27,15 +27,15 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-8">
-                        <h4 class="card-title">Item {{items.length}} </h4>
-                        <h6 class="card-subtitle">Item registrados en mi aplicacion</h6>
+                        <h4 class="card-title">Presupuesto {{gastos.length}} </h4>
+                        <h6 class="card-subtitle">Presupuesto registrados en mi aplicacion</h6>
                     </div>
 
                     <div class="col">
                         <div class="text-right">
                             <button class="btn btn-right btn-primary">
                                 <i class="fa fa-hospital-o"></i>
-                                Crear Item
+                                Crear Presupuesto
                             </button>
                         </div>
                     </div>
@@ -45,20 +45,30 @@
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th>Descripcion</th>
-                                <th>Unidad</th>
-                                <th>Cantidad </th>
-                                <th>Precio producto </th>
+                                <th>Lugar</th>
+                                <th>Profesional</th>
+                                <th>Documentos legales</th>
+                                <th>Costo garantia contratos</th>
+                                <th>Costo operacion</th>
+                                <th>Costo administrativo</th>
+                                <th>Gasto profecional especial</th>
+                                <th>Riesgo imprevisto</th>
+                                <th>Movilizacion demolicion</th>
                                 <th class="w100 text-nowrap">Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let item of items">
+                            <tr *ngFor="let gasto of gastos">
 
-                                <td> {{item.descripcion}} </td>
-                                <td> {{item.unidad}} </td>
-                                <td> {{item.cantidad}} </td>
-                                <td> {{item.precio_producto}} </td>
+                                <td> {{gasto.lugar}} </td>
+                                <td> {{gasto.profesional}} </td>
+                                <td> {{gasto.documentos_legales}} </td>
+                                <td> {{gasto.costo_garantia_contratos}} </td>
+                                <td> {{gasto.costo_operacion}} </td>
+                                <td> {{gasto.costo_administrativo}} </td>
+                                <td> {{gasto.gasto_profecional_especial}} </td>
+                                <td> {{gasto.riesgo_imprevisto}} </td>
+                                <td> {{gasto.movilizacion_demolicion}} </td>
 
                                 <td class="text-nowrap text-center">
                                     <a class="cursor" data-toggle="tooltip" data-original-title="Guardar cambios"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a>

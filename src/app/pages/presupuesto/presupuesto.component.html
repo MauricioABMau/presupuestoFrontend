@@ -3,14 +3,14 @@
         <div class="card">
             <div class="card-body">
 
-                <input type="text" class="form-control" placeholder="Buscar presupuesto...">
+                <input type="text" class="form-control" placeholder="Buscar presupuesto..." #txtTermino>
 
             </div>
         </div>
     </div>
 </div>
 
-<div class="row animated fadeIn fast">
+<div class="row animated fadeIn fast" *ngIf="cargando">
     <div class="col-12">
         <div class="alert alert-info text-center">
             <h4 class="alert-heading">Cargando</h4>
@@ -20,53 +20,59 @@
     </div>
 </div>
 
-<div class="row animated fadeIn fast">
+<div class="row" *ngIf="!cargando">
     <div class="col-12">
         <div class="card">
+
             <div class="card-body">
-                <h4 class="card-title">Total de usuarios</h4>
-                <h6 class="card-subtitle">Usuarios registrados en mi aplicacion</h6>
+                <div class="row">
+                    <div class="col-8">
+                        <h4 class="card-title">Presupuesto {{presupuestos.length}} </h4>
+                        <h6 class="card-subtitle">Presupuesto registrados en mi aplicacion</h6>
+                    </div>
+
+                    <div class="col">
+                        <div class="text-right">
+                            <button class="btn btn-right btn-primary">
+                                <i class="fa fa-hospital-o"></i>
+                                Crear Presupuesto
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
                 <div class="table-responsive">
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th class="w100">Avatar</th>
-                                <th>Correo</th>
-                                <th>Nombre</th>
-                                <th class="w140">Role</th>
-                                <th class="w100">Auth</th>
-                                <th class="text-nowrap w100">Acciones</th>
+                                <th>Nombre Proyecto</th>
+                                <th>Presupuesto Total</th>
+                                <th>Presupuesto de precio unitario</th>
+                                <th class="w100 text-nowrap">Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td class="text-center">
-                                    <img alt="Avatar de usuario" class="avatar cursor">
-                                </td>
-                                <td></td>
-                                <td></td>
+                            <tr *ngFor="let presupuesto of presupuestos">
+
                                 <td>
-                                    <select class="form-control">
-                                        <option  value='ADMIN_ROLE'>Admin</option>
-                                        <option  value='USER_ROLE'>User</option>
-                                    </select>
+                                    <input type="text" class="form-control" placeholder="Nombre del hospital" [(ngModel)]="presupuesto.proyecto.nombre_proyecto">
                                 </td>
-                                <td>
-                                    <span class="label label-danger">Google</span>
-                                    <span class="label label-info">Email</span>
-                                </td>
+                                <td> {{presupuesto.presupuesto_total}} </td>
+                                <td> {{presupuesto.presupuesto_precio_unitario}} </td>
 
                                 <td class="text-nowrap text-center">
-                                    <a data-toggle="tooltip" data-original-title="Borrar"> <i class="fa fa-close text-danger cursor"></i> </a>
+                                    <a class="cursor" data-toggle="tooltip" data-original-title="Guardar cambios"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a>
+                                    <a class="cursor" data-toggle="tooltip" data-original-title="Borrar"> <i class="fa fa-close text-danger"></i> </a>
                                 </td>
                             </tr>
 
                         </tbody>
                     </table>
                 </div>
-                <div>
-                    <button class="btn btn-secondary">Anteriores</button> &nbsp;
-                    <button class="btn btn-secondary">Siguientes</button>
+
+                <div *ngIf="txtTermino.value.length === 0">
+                    <button (click)="cambiarPagina(-5)" class="btn btn-secondary">Anteriores</button> &nbsp;
+                    <button (click)="cambiarPagina(5)" class="btn btn-secondary">Siguientes</button>
                 </div>
             </div>
         </div>

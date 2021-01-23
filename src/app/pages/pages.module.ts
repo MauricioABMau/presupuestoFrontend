@@ -8,7 +8,7 @@ import { PagesComponent } from './pages.component';
 import { SharedModule } from '../shared/shared.module';
 import { ProyectoComponent } from './proyecto/proyecto.component';
 import { PresupuestoComponent } from './presupuesto/presupuesto.component';
-import { PrecioUnitarioComponent } from './precio-unitario/precio-unitario.component';
+import { GastoComponent } from './gasto/gasto.component';
 import { ItemComponent } from './item/item.component';
 import { EstimacionHerramientaComponent } from './estimacion-herramienta/estimacion-herramienta.component';
 import { EstimacionManoObraComponent } from './estimacion-mano-obra/estimacion-mano-obra.component';
@@ -18,7 +18,7 @@ import { PerfilComponent } from './perfil/perfil.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UsuarioComponent } from './usuario/usuario.component';
 import { ComponentsModule } from '../components/modal-imagen/components.module';
-
+import { PipesModule } from '../pipes/pipes.module'
 
 
 @NgModule({
@@ -27,7 +27,7 @@ import { ComponentsModule } from '../components/modal-imagen/components.module';
     PagesComponent,
     ProyectoComponent,
     PresupuestoComponent,
-    PrecioUnitarioComponent,
+    GastoComponent,
     ItemComponent,
     EstimacionHerramientaComponent,
     EstimacionManoObraComponent,
@@ -41,7 +41,7 @@ import { ComponentsModule } from '../components/modal-imagen/components.module';
     PagesComponent,
     ProyectoComponent,
     PresupuestoComponent,
-    PrecioUnitarioComponent,
+    GastoComponent,
     ItemComponent,
     EstimacionHerramientaComponent,
     EstimacionManoObraComponent,
@@ -54,7 +54,8 @@ import { ComponentsModule } from '../components/modal-imagen/components.module';
     ReactiveFormsModule,
     SharedModule,
     RouterModule,
-    ComponentsModule
+    ComponentsModule,
+    PipesModule
   ] 
 })
 export class PagesModule { }

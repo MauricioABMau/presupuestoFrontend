@@ -21,7 +21,7 @@ export class SidebarService {
       icono: 'mdi mdi-folder-lock-open',
       submenu: [
         {titulo: 'presupuesto', url: 'presupuesto'},
-        {titulo: 'precioUnitario', url: 'precioUnitario'},
+        {titulo: 'gasto', url: 'gasto'},
       ]
     },
     {
