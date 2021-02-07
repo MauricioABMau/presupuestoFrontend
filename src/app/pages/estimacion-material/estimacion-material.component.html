@@ -3,7 +3,7 @@
         <div class="card">
             <div class="card-body">
 
-                <input type="text" class="form-control" placeholder="Buscar material..." #txtTermino>
+                <input type="text" class="form-control" placeholder="Buscar material..." #txtTermino (keyup)="buscar(txtTermino.value)">
 
             </div>
         </div>
@@ -31,15 +31,6 @@
                         <h6 class="card-subtitle">Material registrados en mi aplicacion</h6>
                     </div>
 
-                    <div class="col">
-                        <div class="text-right">
-                            <button class="btn btn-right btn-primary">
-                                <i class="fa fa-hospital-o"></i>
-                                Crear Material
-                            </button>
-                        </div>
-                    </div>
-
                 </div>
                 <div class="table-responsive">
                     <table class="table table-bordered">
@@ -59,8 +50,8 @@
                                 <td> {{material.precio_material}} </td>
 
                                 <td class="text-nowrap text-center">
-                                    <a class="cursor" data-toggle="tooltip" data-original-title="Guardar cambios"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a>
-                                    <a class="cursor" data-toggle="tooltip" data-original-title="Borrar"> <i class="fa fa-close text-danger"></i> </a>
+                                    <a [routerLink]="['/dashboard/materialc', material.id]" class="cursor" data-toggle="tooltip" data-original-title="Guardar cambios"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a>
+                                    <a (click)="eliminarMaterial(material)" class="cursor" data-toggle="tooltip" data-original-title="Borrar"> <i class="fa fa-close text-danger"></i> </a>
                                 </td>
                             </tr>
 

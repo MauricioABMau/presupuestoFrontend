@@ -6,8 +6,6 @@ interface _GastosPresupuesto {
     id: string,
 }
 
-
-
 export class Gastos {
     constructor(public lugar: ConstrainDouble,
                 public profesional: ConstrainDouble,
@@ -19,7 +17,8 @@ export class Gastos {
                 public riesgo_imprevisto: ConstrainDouble,
                 public movilizacion_demolicion: ConstrainDouble,
                 public id?: string,
-                public presupueso?: _GastosPresupuesto,
+                public presupuestoId?: string,
+                public presupuesto?: _GastosPresupuesto,
                 public usuario?: Usuario
                 ) {}
 }

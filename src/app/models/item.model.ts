@@ -17,7 +17,8 @@ export class  Item {
         public precio_producto: ConstrainDouble,
         public presupuesto?: _ItemPresupuesto,
         public usaurio?: Usuario,
-        public id?: string
+        public id?: string,
+        public presupuestoId?: string
     ) {
 
     }

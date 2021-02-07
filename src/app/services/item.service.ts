@@ -12,6 +12,8 @@ const base_url = environment.base_url;
 })
 export class ItemService {
 
+  public item: Item;
+
   constructor(private http: HttpClient) { }
 
   get token(): string {
@@ -35,15 +37,23 @@ export class ItemService {
     )
   }
 
-  crearItem(descripcion: ConstrainDouble, unidad: ConstrainDouble, cantidad: ConstrainDouble, precio_producto: ConstrainDouble) {
-    const url = `${base_url}/item`;
-    return this.http.post(url, {descripcion, unidad, cantidad, precio_producto}, this.headers);
+  obtenerItemPorId(id: string) {
+    const url = `${base_url}/item/${id}`;
+    return this.http.get(url, this.headers)
+    .pipe(
+      map((resp: {ok: boolean, item: Item}) => resp.item)
+    )
+  }
+
+  crearItem(item: Item, idpre: string) {
+    const url = `${base_url}/item/${idpre}`;
+    return this.http.post(url, item, this.headers);
 
   }
     
-  actualizarItem(id: string, descripcion: ConstrainDouble, unidad: ConstrainDouble, cantidad: ConstrainDouble, precio_producto: ConstrainDouble) {
-    const url = `${base_url}/item/${id}`;
-    return this.http.put(url, {descripcion, unidad, cantidad, precio_producto}, this.headers);
+  actualizarItem(item: Item) {
+    const url = `${base_url}/item/${item.id}`;
+    return this.http.put(url, item, this.headers);
 
   }
   

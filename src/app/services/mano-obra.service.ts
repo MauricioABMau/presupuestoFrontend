@@ -11,6 +11,8 @@ const base_url = environment.base_url;
 })
 export class ManoObraService {
 
+  public manoObra: ManoObra;
+
   constructor(private http: HttpClient) { }
 
   get token(): string {
@@ -34,20 +36,24 @@ export class ManoObraService {
     )
   }
 
-  crearManoObra(cargo: string,
-                sueldo: ConstrainDouble,) {
-    const url = `${base_url}/manoObra`;
-    return this.http.post(url, {cargo,
-                                sueldo}, this.headers);
+  obtenerManoObraPorId(id: string) {
+    const url = `${base_url}/manoObra/${id}`;
+    return this.http.get(url, this.headers)
+    .pipe(
+      map((resp: {ok: boolean, manoObra: ManoObra}) => resp.manoObra)
+    )
+  }
+    
+
+  crearManoObra(manoObra: ManoObra, idit: string) {
+    const url = `${base_url}/manoObra/${idit}`;
+    return this.http.post(url, manoObra, this.headers);
 
   }
 
-  actualizarManoObra(id: string,
-                     cargo: string,
-                     sueldo: ConstrainDouble,) {
-    const url = `${base_url}/manoObra/${id}`;
-    return this.http.put(url, {cargo,
-                               sueldo}, this.headers);
+  actualizarManoObra(manoObra: ManoObra) {
+    const url = `${base_url}/manoObra/${manoObra.id}`;
+    return this.http.put(url, manoObra, this.headers);
 
   }
 

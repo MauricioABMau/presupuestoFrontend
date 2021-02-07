@@ -11,6 +11,8 @@ const base_url = environment.base_url;
 })
 export class MaterialService {
 
+  public material: Material;
+
   constructor(private http: HttpClient) { }
 
   get token(): string {
@@ -34,23 +36,22 @@ export class MaterialService {
     )
   }
 
-  crearMaterial(nombre_material: string,
-                cantidad_material: ConstrainDouble,
-                precio_material: ConstrainDouble,) {
-    const url = `${base_url}/material`;
-    return this.http.post(url, {nombre_material,
-                                cantidad_material,
-                                precio_material}, this.headers);
+  obtenerMaterialPorId(id: string) {
+    const url = `${base_url}/material/${id}`;
+    return this.http.get(url, this.headers)
+    .pipe(
+      map((resp: {ok: boolean, material: Material}) => resp.material)
+    )
   }
 
-  actualizarMaterial(id: string,
-                    nombre_material: string,
-                    cantidad_material: ConstrainDouble,
-                    precio_material: ConstrainDouble,) {
-  const url = `${base_url}/material/${id}`;
-  return this.http.put(url, {nombre_material,
-                             cantidad_material,
-                             precio_material}, this.headers);
+  crearMaterial(material: Material, idit: string) {
+    const url = `${base_url}/material/${idit}`;
+    return this.http.post(url, material, this.headers);
+  }
+
+  actualizarMaterial(material: Material) {
+  const url = `${base_url}/material/${material.id}`;
+  return this.http.put(url, material, this.headers);
   }
 
   borrarMaterial(id: string) {

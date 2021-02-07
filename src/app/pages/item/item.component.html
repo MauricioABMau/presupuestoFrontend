@@ -3,7 +3,7 @@
         <div class="card">
             <div class="card-body">
 
-                <input type="text" class="form-control" placeholder="Buscar items..." #txtTermino>
+                <input type="text" class="form-control" placeholder="Buscar items..." #txtTermino (keyup)="buscar(txtTermino.value)">
 
             </div>
         </div>
@@ -31,14 +31,13 @@
                         <h6 class="card-subtitle">Item registrados en mi aplicacion</h6>
                     </div>
 
-                    <div class="col">
+                    <!-- <div class="col">
                         <div class="text-right">
-                            <button class="btn btn-right btn-primary">
-                                <i class="fa fa-hospital-o"></i>
-                                Crear Item
-                            </button>
+                            <a class="btn btn-right btn-primary" routerLink="/dashboard/itemc/nuevo">
+                                <i class="fa fa-hospital-o"></i> Crear item
+                            </a>
                         </div>
-                    </div>
+                    </div> -->
 
                 </div>
                 <div class="table-responsive">
@@ -49,6 +48,9 @@
                                 <th>Unidad</th>
                                 <th>Cantidad </th>
                                 <th>Precio producto </th>
+                                <th>Herramienta</th>
+                                <th>Material</th>
+                                <th>Mano de obra</th>
                                 <th class="w100 text-nowrap">Acciones</th>
                             </tr>
                         </thead>
@@ -59,10 +61,25 @@
                                 <td> {{item.unidad}} </td>
                                 <td> {{item.cantidad}} </td>
                                 <td> {{item.precio_producto}} </td>
+                                <td>
+                                    <a class="btn btn-right btn-primary" [routerLink]="['/dashboard/estimacionHerramientav', item.id]">
+                                        <i class="fa fa-hospital-o"></i> Crear herramienta
+                                    </a>
+                                </td>
+                                <td>
+                                    <a class="btn btn-right btn-primary" [routerLink]="['/dashboard/estimacionManoObrav', item.id]">
+                                        <i class="fa fa-hospital-o"></i> Crear material
+                                    </a>
+                                </td>
+                                <td>
+                                    <a class="btn btn-right btn-primary" [routerLink]="['/dashboard/estimacionMaterialv', item.id]">
+                                        <i class="fa fa-hospital-o"></i> Crear mano de obra
+                                    </a>
+                                </td>
 
                                 <td class="text-nowrap text-center">
-                                    <a class="cursor" data-toggle="tooltip" data-original-title="Guardar cambios"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a>
-                                    <a class="cursor" data-toggle="tooltip" data-original-title="Borrar"> <i class="fa fa-close text-danger"></i> </a>
+                                    <a [routerLink]="['/dashboard/itemc', item.id]" class="cursor" data-toggle="tooltip" data-original-title="Guardar cambios"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a>
+                                    <a (click)="eliminarItem(item)" class="cursor" data-toggle="tooltip" data-original-title="Borrar"> <i class="fa fa-close text-danger"></i> </a>
                                 </td>
                             </tr>
 

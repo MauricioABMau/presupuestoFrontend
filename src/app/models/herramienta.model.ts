@@ -16,7 +16,8 @@ export class  Herramienta {
         public precio_herramienta: ConstrainDouble,
         public item?: _HerramientaItem,
         public usaurio?: Usuario,
-        public id?: string
+        public id?: string,
+        public itemId?: string
     ) {
 
     }

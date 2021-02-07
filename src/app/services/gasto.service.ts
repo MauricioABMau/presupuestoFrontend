@@ -11,7 +11,13 @@ const base_url = environment.base_url;
 })
 export class GastoService {
 
+  public gasto: Gastos;
+
   constructor(private http: HttpClient) { }
+
+  get id(): string {
+    return this.gasto.id || '';
+  }
 
   get token(): string {
     return localStorage.getItem('token') || '';
@@ -34,48 +40,23 @@ export class GastoService {
     )
   }
 
-  crearGasto(lugar: ConstrainDouble,
-                   profesional: ConstrainDouble,
-                   documentos_legales: ConstrainDouble,
-                   costo_garantia_contratos: ConstrainDouble,
-                   costo_operacion: ConstrainDouble,
-                   costo_administrativo: ConstrainDouble,
-                   gasto_profecional_especial: ConstrainDouble,
-                   riesgo_imprevisto: ConstrainDouble,
-                   movilizacion_demolicion: ConstrainDouble,) {
-    const url = `${base_url}/gasto`;
-    return this.http.post(url, {lugar,
-                                profesional,
-                                documentos_legales,
-                                costo_garantia_contratos,
-                                costo_operacion,
-                                costo_administrativo,
-                                gasto_profecional_especial,
-                                riesgo_imprevisto,
-                                movilizacion_demolicion}, this.headers);
+  obtenerGastosPorId(id: string) {
+    const url = `${base_url}/gasto/${id}`;
+    return this.http.get(url, this.headers)
+    .pipe(
+      map((resp: {ok: boolean, gasto: Gastos}) => resp.gasto)
+    )
+  }
+
+  crearGasto(gasto: Gastos, idpre: string) {
+    const url = `${base_url}/gasto/${idpre}`;
+    return this.http.post(url, gasto, this.headers);
 
   }
     
-  actualizarGasto(id: string,
-                        lugar: ConstrainDouble,
-                        profesional: ConstrainDouble,
-                        documentos_legales: ConstrainDouble,
-                        costo_garantia_contratos: ConstrainDouble,
-                        costo_operacion: ConstrainDouble,
-                        costo_administrativo: ConstrainDouble,
-                        gasto_profecional_especial: ConstrainDouble,
-                        riesgo_imprevisto: ConstrainDouble,
-                        movilizacion_demolicion: ConstrainDouble,) {
-    const url = `${base_url}/gasto/${id}`;
-    return this.http.put(url, { lugar,
-                                profesional,
-                                documentos_legales,
-                                costo_garantia_contratos,
-                                costo_operacion,
-                                costo_administrativo,
-                                gasto_profecional_especial,
-                                riesgo_imprevisto,
-                                movilizacion_demolicion}, this.headers);
+  actualizarGasto(gasto: Gastos) {
+    const url = `${base_url}/gasto/${gasto.id}`;
+    return this.http.put(url, gasto, this.headers);
 
   }
   

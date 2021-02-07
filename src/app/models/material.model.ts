@@ -15,7 +15,8 @@ export class  Material {
         public precio_material: ConstrainDouble,
         public item?: _MaterialItem,
         public usuario?: Usuario,
-        public id?: string
+        public id?: string,
+        public itemId?: string
     ) {
 
     }

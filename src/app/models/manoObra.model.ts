@@ -14,7 +14,8 @@ export class  ManoObra {
         public sueldo: ConstrainDouble,
         public item?: _ManoObraItem,
         public usuario?: Usuario,
-        public id?: string
+        public id?: string,
+        public itemId?: string
     ) {
 
     }

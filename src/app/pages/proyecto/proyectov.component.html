@@ -3,7 +3,7 @@
         <div class="card">
             <div class="card-body">
 
-                <input type="text" class="form-control" placeholder="Buscar mano de obra..." #txtTermino (keyup)="buscar(txtTermino.value)">
+                <input type="text" class="form-control" placeholder="Buscar presupuesto..." (keyup)="buscar(txtTermino.value)" #txtTermino>
 
             </div>
         </div>
@@ -27,8 +27,8 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-8">
-                        <h4 class="card-title">Mano de obra {{manoObras.length}} </h4>
-                        <h6 class="card-subtitle">Mano de obra registrada en mi aplicacion</h6>
+                        <h4 class="card-title">Presupuesto {{presupuestos.length}} </h4>
+                        <h6 class="card-subtitle">Presupuesto registrados en mi aplicacion</h6>
                     </div>
 
                 </div>
@@ -36,20 +36,26 @@
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th>cargo</th>
-                                <th>sueldo</th>
+                                <th>Presupuesto Total</th>
+                                <th>Presupuesto de precio unitario</th>
+                                <th>Utilidad</th>
+                                <th>IVA</th>
+                                <th>IT</th>
                                 <th class="w100 text-nowrap">Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let manoObra of manoObras">
+                            <tr *ngFor="let presupuesto of presupuestos">
 
-                                <td> {{manoObra.cargo}} </td>
-                                <td> {{manoObra.sueldo}} </td>
 
+                                <td> {{presupuesto.presupuesto_total}} </td>
+                                <td> {{presupuesto.presupuesto_precio_unitario}} </td>
+                                <td> {{presupuesto.utilidad}} </td>
+                                <td> {{presupuesto.iva}} </td>
+                                <td> {{presupuesto.it}} </td>
                                 <td class="text-nowrap text-center">
-                                    <a [routerLink]="['/dashboard/manoObrac', manoObra.id]" class="cursor" data-toggle="tooltip" data-original-title="Guardar cambios"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a>
-                                    <a (click)="eliminarManoObra(manoObra)" class="cursor" data-toggle="tooltip" data-original-title="Borrar"> <i class="fa fa-close text-danger"></i> </a>
+                                    <a [routerLink]="['/dashboard/presupuestoc', presupuesto.id]" class="cursor" data-toggle="tooltip" data-original-title="Guardar cambios"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a>
+                                    <a (click)="eliminarPresupuesto(presupuesto)" class="cursor" data-toggle="tooltip" data-original-title="Borrar"> <i class="fa fa-close text-danger"></i> </a>
                                 </td>
                             </tr>
 

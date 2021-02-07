@@ -18,7 +18,20 @@ import { PerfilComponent } from './perfil/perfil.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UsuarioComponent } from './usuario/usuario.component';
 import { ComponentsModule } from '../components/modal-imagen/components.module';
-import { PipesModule } from '../pipes/pipes.module'
+import { PipesModule } from '../pipes/pipes.module';
+import { ProyectocComponent } from './proyecto/proyectoc.component';
+import { PresupuestocComponent } from './presupuesto/presupuestoc.component';
+import { GastocComponent } from './gasto/gastoc.component';
+import { ItemcComponent } from './item/itemc.component';
+import { HerramientacComponent } from './estimacion-herramienta/herramientac.component';
+import { ManoObracComponent } from './estimacion-mano-obra/mano-obrac.component';
+import { MaterialcComponent } from './estimacion-material/materialc.component';
+import { ProyectovComponent } from './proyecto/proyectov.component';
+import { GastovComponent } from './presupuesto/gastov.component';
+import { ItemvComponent } from './presupuesto/itemv.component';
+import { MaterialvComponent } from './item/materialv.component';
+import { HerramientavComponent } from './item/herramientav.component';
+import { ManoObravComponent } from './item/mano-obrav.component'
 
 
 @NgModule({
@@ -34,7 +47,20 @@ import { PipesModule } from '../pipes/pipes.module'
     EstimacionMaterialComponent,
     AccountSettingsComponent,
     PerfilComponent,
-    UsuarioComponent
+    UsuarioComponent,
+    ProyectocComponent,
+    PresupuestocComponent,
+    GastocComponent,
+    ItemcComponent,
+    HerramientacComponent,
+    ManoObracComponent,
+    MaterialcComponent,
+    ProyectovComponent,
+    GastovComponent,
+    ItemvComponent,
+    MaterialvComponent,
+    HerramientavComponent,
+    ManoObravComponent
   ],
   exports: [
     DashboardComponent,

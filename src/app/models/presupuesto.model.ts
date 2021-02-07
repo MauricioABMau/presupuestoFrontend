@@ -15,6 +15,7 @@ export class Presupuesto {
                 public it: ConstrainDouble,
                 public proyecto?: _PresupuestoProyecto,
                 public usuario?: Usuario,
-                public id?: string
+                public id?: string,
+                public proyectoId?: string
                 ) {}
 }

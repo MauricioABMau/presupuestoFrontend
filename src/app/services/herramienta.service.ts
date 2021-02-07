@@ -12,6 +12,8 @@ const base_url = environment.base_url;
 })
 export class HerramientaService {
 
+  public herramienta: Herramienta;
+
   constructor(private http: HttpClient) { }
 
   get token(): string {
@@ -35,24 +37,23 @@ export class HerramientaService {
     )
   }
 
-  crearHerramienta(nombre_herramienta: string,
-                   tipo: string,
-                   precio_herramienta: ConstrainDouble,) {
-    const url = `${base_url}/herramienta`;
-    return this.http.post(url, {nombre_herramienta,
-                                tipo,
-                                precio_herramienta}, this.headers);
+  obtenerHerramientaPorId(id: string) {
+    const url = `${base_url}/herramienta/${id}`;
+    return this.http.get(url, this.headers)
+    .pipe(
+      map((resp: {ok: boolean, herramienta: Herramienta}) => resp.herramienta)
+    )
+  }
+    
+  crearHerramienta(herramienta: Herramienta, idit: string) {
+    const url = `${base_url}/herramienta/${idit}`;
+    return this.http.post(url, herramienta, this.headers);
 
   }
     
-  actualizarHerramienta(id: string, 
-                        nombre_herramienta: string,
-                        tipo: string,
-                        precio_herramienta: ConstrainDouble,) {
-    const url = `${base_url}/herramienta/${id}`;
-    return this.http.put(url, {nombre_herramienta,
-      tipo,
-      precio_herramienta}, this.headers);
+  actualizarHerramienta(herramienta: Herramienta) {
+    const url = `${base_url}/herramienta/${herramienta.id}`;
+    return this.http.put(url, herramienta, this.headers);
 
   }
   

@@ -14,7 +14,13 @@ const base_url = environment.base_url;
 
 export class PresupuestoService {
 
+  public presupuesto: Presupuesto;
+
   constructor(private http: HttpClient) { }
+
+  get id(): string {
+    return this.presupuesto.id || '';
+  }
 
   get token(): string {
     return localStorage.getItem('token') || '';
@@ -37,15 +43,23 @@ export class PresupuestoService {
     )
   }
 
-  crearPresupuesto(presupuesto_total: ConstrainDouble, presupuesto_precio_unitario: ConstrainDouble, utilidad: ConstrainDouble, iva: ConstrainDouble, it: ConstrainDouble) {
-    const url = `${base_url}/presupuesto`;
-    return this.http.post(url, {presupuesto_total, presupuesto_precio_unitario, utilidad, iva, it}, this.headers);
+  obtenerPresupuestoPorId(id: string) {
+    const url = `${base_url}/presupuesto/${id}`;
+    return this.http.get(url, this.headers)
+    .pipe(
+      map((resp: {ok: boolean, presupuesto: Presupuesto}) => resp.presupuesto)
+    )
+  }
+
+  crearPresupuesto(presupuesto: Presupuesto, idpro: string) {
+    const url = `${base_url}/presupuesto/${idpro}`;
+    return this.http.post(url, presupuesto, this.headers);
 
   }
     
-  actualizarPresupuesto(id: string, presupuesto_total: ConstrainDouble, presupuesto_precio_unitario: ConstrainDouble, utilidad: ConstrainDouble, iva: ConstrainDouble, it: ConstrainDouble) {
-    const url = `${base_url}/presupuesto/${id}`;
-    return this.http.put(url, {presupuesto_total, presupuesto_precio_unitario, utilidad, iva, it}, this.headers);
+  actualizarPresupuesto(presupuesto: Presupuesto) {
+    const url = `${base_url}/presupuesto/${presupuesto.id}`;
+    return this.http.put(url, presupuesto, this.headers);
 
   }
   

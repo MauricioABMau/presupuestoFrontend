@@ -3,7 +3,7 @@
         <div class="card">
             <div class="card-body">
 
-                <input type="text" class="form-control" placeholder="Buscar proyecto..." #txtTermino>
+                <input type="text" class="form-control" placeholder="Buscar proyecto..." (keyup)="buscar(txtTermino.value)" #txtTermino>
 
             </div>
         </div>
@@ -33,10 +33,9 @@
 
                     <div class="col">
                         <div class="text-right">
-                            <button class="btn btn-right btn-primary">
-                                <i class="fa fa-hospital-o"></i>
-                                Crear proyecto
-                            </button>
+                            <a class="btn btn-right btn-primary" routerLink="/dashboard/proyectoc/nuevo">
+                                <i class="fa fa-hospital-o"></i> Crear proyecto
+                            </a>
                         </div>
                     </div>
 
@@ -48,23 +47,33 @@
                                 <th>Nombre del proyecto</th>
                                 <th>Departamento</th>
                                 <th>Direccion</th>
-                                <th>Fecha elaborada</th>
+                                <th>Agregar Presupuesto</th>
+                                <th>Ver Presupuesto</th>
+
                                 <th class="w100 text-nowrap">Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr *ngFor="let proyecto of proyectos">
 
-                                <td>
-                                    <input type="text" class="form-control" placeholder="Nombre del hospital" [(ngModel)]="proyecto.nombre_proyecto">
-                                </td>
+                                <td> {{proyecto.nombre_proyecto}} </td>
                                 <td> {{proyecto.departamento}} </td>
                                 <td> {{proyecto.direccion}} </td>
-                                <td> {{proyecto.fecha}} </td>
+                                <td>
+                                    <a class="btn btn-right btn-primary" [routerLink]="['/dashboard/presupuestoc/nuevo', proyecto.id]">
+                                        <i class="fa fa-hospital-o"></i> Crear presupuesto
+                                    </a>
+                                </td>
+
+                                <td>
+                                    <a class="btn btn-right btn-primary" [routerLink]="['/dashboard/presupuestov/', proyecto.id]">
+                                        <i class="fa fa-hospital-o"></i> Ver presupuesto
+                                    </a>
+                                </td>
 
                                 <td class="text-nowrap text-center">
-                                    <a class="cursor" data-toggle="tooltip" data-original-title="Guardar cambios"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a>
-                                    <a class="cursor" data-toggle="tooltip" data-original-title="Borrar"> <i class="fa fa-close text-danger"></i> </a>
+                                    <a [routerLink]="['/dashboard/proyectoc', proyecto.id]" class="cursor" data-toggle="tooltip" data-original-title="Guardar cambios"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a>
+                                    <a (click)="eliminarProyecto(proyecto)" class="cursor" data-toggle="tooltip" data-original-title="Borrar"> <i class="fa fa-close text-danger"></i> </a>
                                 </td>
                             </tr>
 
