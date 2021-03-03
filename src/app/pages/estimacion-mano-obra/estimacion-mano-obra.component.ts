@@ -28,6 +28,7 @@ export class EstimacionManoObraComponent implements OnInit {
     this.manoObraForm = this.fb.group({
       cargo: ['', Validators.required],
       sueldo: ['', Validators.required],
+      nro_personal: ['', Validators.required],
      })
   }
 

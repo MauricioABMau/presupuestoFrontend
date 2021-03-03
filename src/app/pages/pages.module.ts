@@ -31,7 +31,8 @@ import { GastovComponent } from './presupuesto/gastov.component';
 import { ItemvComponent } from './presupuesto/itemv.component';
 import { MaterialvComponent } from './item/materialv.component';
 import { HerramientavComponent } from './item/herramientav.component';
-import { ManoObravComponent } from './item/mano-obrav.component'
+import { ManoObravComponent } from './item/mano-obrav.component';
+import { GenerarPresupuestoComponent } from './generar-presupuesto/generar-presupuesto.component'
 
 
 @NgModule({
@@ -60,7 +61,8 @@ import { ManoObravComponent } from './item/mano-obrav.component'
     ItemvComponent,
     MaterialvComponent,
     HerramientavComponent,
-    ManoObravComponent
+    ManoObravComponent,
+    GenerarPresupuestoComponent
   ],
   exports: [
     DashboardComponent,

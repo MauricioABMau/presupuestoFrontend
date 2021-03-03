@@ -30,10 +30,9 @@ export class ManoObracComponent implements OnInit {
        this.idit = id;
     })
     this.manoObraForm = this.fb.group({
-      descripcion: ['', Validators.required],
-      unidad: ['', Validators.required],
-      cantidad: ['', Validators.required],
-      precio_producto: ['', Validators.required],
+      cargo: ['', Validators.required],
+      sueldo: ['', Validators.required],
+      nro_personal: ['', Validators.required],
     });
     this.cargarManoObra();
     
@@ -57,10 +56,10 @@ export class ManoObracComponent implements OnInit {
       if(!manoObra) {
         return this.router.navigateByUrl(`dashboard/manoObra`)
       }
-      const{cargo, sueldo} = manoObra;
+      const{cargo, sueldo, nro_personal} = manoObra;
       console.log(manoObra);
       this.manoObraSeleccionado = manoObra;
-      this.manoObraForm.setValue({cargo, sueldo})
+      this.manoObraForm.setValue({cargo, sueldo, nro_personal})
     })
   }
 
@@ -81,7 +80,7 @@ export class ManoObracComponent implements OnInit {
       .subscribe((resp: any) => {
         console.log(resp);
         Swal.fire('Creado', `${id} creado correctamente`, 'success');
-        this.router.navigateByUrl(`dashboard/manoObrac/${resp.manoObraDB.id}`)
+        this.router.navigateByUrl(`dashboard/item`)
       })
     }
   }

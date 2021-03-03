@@ -34,8 +34,7 @@ export class PresupuestoService {
     }
   }
 
-  cargarPresupuesto() {
-    
+  cargarPresupuesto() {    
     const url = `${base_url}/presupuesto`;
     return this.http.get(url, this.headers)
     .pipe(

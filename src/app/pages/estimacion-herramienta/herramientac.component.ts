@@ -30,10 +30,10 @@ export class HerramientacComponent implements OnInit {
        this.idit = id;
     })
     this.herramientaForm = this.fb.group({
-      descripcion: ['', Validators.required],
-      unidad: ['', Validators.required],
-      cantidad: ['', Validators.required],
-      precio_producto: ['', Validators.required],
+      nombre_herramienta: ['', Validators.required],
+      tipo: ['', Validators.required],
+      precio_herramienta: ['', Validators.required],
+      cantidad_herramienta: ['', Validators.required],
     });
     this.cargarHerramienta();
     
@@ -57,10 +57,10 @@ export class HerramientacComponent implements OnInit {
       if(!herramienta) {
         return this.router.navigateByUrl(`dashboard/herramienta`)
       }
-      const{nombre_herramienta, tipo, precio_herramienta} = herramienta;
+      const{nombre_herramienta, tipo, precio_herramienta, cantidad_herramienta} = herramienta;
       console.log(herramienta);
       this.herramientaSeleccionado = herramienta;
-      this.herramientaForm.setValue({nombre_herramienta, tipo, precio_herramienta})
+      this.herramientaForm.setValue({nombre_herramienta, tipo, precio_herramienta, cantidad_herramienta})
     })
   }
 
@@ -81,7 +81,7 @@ export class HerramientacComponent implements OnInit {
       .subscribe((resp: any) => {
         console.log(resp);
         Swal.fire('Creado', `${id} creado correctamente`, 'success');
-        this.router.navigateByUrl(`dashboard/herramientac/${resp.herramientaDB.id}`)
+        this.router.navigateByUrl(`dashboard/item`)
       })
     }
   }

@@ -51,9 +51,14 @@ export class ItemvComponent implements OnInit {
     this.itemService.cargarItem()
     .subscribe( resp => {
       for (let index = 0; index < resp.length; index++) {
-        if(resp[index].presupuestoId.toString() === this.idpro){
-          this.items.push(resp[index])
-          console.log(this.items);
+        if(resp[index].presupuestoId === null) {
+
+        } else {
+          if(resp[index].presupuestoId.toString() === this.idpro){
+            this.items.push(resp[index])
+            console.log(this.items);
+          }
+
         }
       }
     })

@@ -30,7 +30,7 @@ export class EstimacionHerramientaComponent implements OnInit {
       nombre_herramienta: ['', Validators.required],
       tipo: ['', Validators.required],
       precio_herramienta: ['', Validators.required],
-      
+      cantidad_herramienta: ['', Validators.required],      
     })
   }
 

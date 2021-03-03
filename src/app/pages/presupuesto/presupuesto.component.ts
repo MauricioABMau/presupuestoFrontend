@@ -5,6 +5,11 @@ import { PresupuestoService } from '../../services/presupuesto.service';
 import Swal from 'sweetalert2';
 import { BusquedasService } from '../../services/busquedas.service';
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
+import { ItemService } from '../../services/item.service';
+import { Item } from '../../models/item.model';
+import { Router } from '@angular/router';
+import { Gastos } from '../../models/gasto.model';
+import { GastoService } from '../../services/gasto.service';
 
 @Component({
   selector: 'app-presupuesto',
@@ -16,12 +21,16 @@ export class PresupuestoComponent implements OnInit {
 
   public presupuestos: Presupuesto[] = [];
   public cargando: boolean = true;
+  public cargarItem: boolean = false;
   public totalPresupuesto: number = 0;
   public desde: number = 0;
   public presupuestoForm: FormGroup;
 
   constructor(private presupuestoService: PresupuestoService,
               private busquedasService: BusquedasService,
+              private itemService: ItemService,
+              private gastoService: GastoService,
+              private router: Router,
               private fb: FormBuilder) { }
   
   ngOnInit(): void {
@@ -95,6 +104,58 @@ export class PresupuestoComponent implements OnInit {
       });
       }
     })
+  }
+
+  verificaItem(presupuestoId: string) {  
+    var auxItem: Item[] = [];
+    this.itemService.cargarItem()
+    .subscribe( resp => {   
+      for (let index = 0; index < resp.length; index++) {
+        if(resp[index].presupuestoId === null) {
+          
+        } else {
+          if(resp[index].presupuestoId === presupuestoId){
+            auxItem.push(resp[index]);
+          }
+        }
+      }
+      if(auxItem.length >= 1) {
+        Swal.fire(
+          'No puede crear mas items para este presupuesto',
+          '',
+          'error'
+        )
+        this.router.navigateByUrl(`dashboard/presupuesto`)
+      } else {
+        this.router.navigateByUrl(`/dashboard/itemc/nuevo/${presupuestoId}`)
+      }
+    })    
+  }
+  
+  verificaGasto(presupuestoId: string) {  
+    var auxGasto: Gastos[] = [];
+    this.gastoService.cargarGasto()
+    .subscribe( resp => {   
+      for (let index = 0; index < resp.length; index++) {
+        if(resp[index].presupuestoId === null) {
+          
+        } else {
+          if(resp[index].presupuestoId === presupuestoId){
+            auxGasto.push(resp[index]);
+          }
+        }
+      }
+      if(auxGasto.length >= 1) {
+        Swal.fire(
+          'No puede crear mas gastos para este presupuesto',
+          '',
+          'error'
+        )
+        this.router.navigateByUrl(`dashboard/presupuesto`)
+      } else {
+        this.router.navigateByUrl(`/dashboard/gastoc/nuevo/${presupuestoId}`)
+      }
+    })    
   }
 
 }

@@ -51,6 +51,8 @@
                                 <th>IT</th>
                                 <th>Ver gasto</th>
                                 <th>Ver item</th>
+                                <th>Crear gasto</th>
+                                <th>Crear item</th>
 
                                 <th class="w100 text-nowrap">Acciones</th>
                             </tr>
@@ -66,25 +68,27 @@
                                 <td> {{presupuesto.it}} </td>
                                 <td>
                                     <a class="btn btn-right btn-primary" [routerLink]="['/dashboard/gastov/', presupuesto.id]">
-                                        <i class="fa fa-hospital-o"></i> Ver presupuesto
+                                        Ver gasto
                                     </a>
                                 </td>
                                 <td>
                                     <a class="btn btn-right btn-primary" [routerLink]="['/dashboard/itemv/', presupuesto.id]">
-                                        <i class="fa fa-hospital-o"></i> Ver presupuesto
+                                        Ver item
                                     </a>
                                 </td>
                                 <td>
-                                    <a class="btn btn-right btn-primary" [routerLink]="['/dashboard/gastoc/nuevo', presupuesto.id]">
-                                        <i class="fa fa-hospital-o"></i> Crear gasto
+                                    <a class="btn btn-right btn-primary" style="color: white;" (click)="verificaGasto(presupuesto.id)">
+                                        Crear gasto
                                     </a>
                                 </td>
 
                                 <td>
-                                    <a class="btn btn-right btn-primary" [routerLink]="['/dashboard/itemc/nuevo', presupuesto.id]">
-                                        <i class="fa fa-hospital-o"></i> Crear item
+                                    <a class="btn btn-right btn-primary" style="color: white;" (click)="verificaItem(presupuesto.id)">
+                                        Crear item
                                     </a>
                                 </td>
+
+
 
                                 <td class="text-nowrap text-center">
                                     <a [routerLink]="['/dashboard/presupuestoc', presupuesto.id]" class="cursor" data-toggle="tooltip" data-original-title="Guardar cambios"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a>

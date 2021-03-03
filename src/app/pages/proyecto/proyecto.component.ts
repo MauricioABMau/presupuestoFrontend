@@ -6,6 +6,9 @@ import { ProyectoService } from '../../services/proyecto.service';
 import { BusquedasService } from '../../services/busquedas.service';
 
 import { Proyecto } from '../../models/proyecto.model';
+import { Presupuesto } from '../../models/presupuesto.model';
+import { PresupuestoService } from '../../services/presupuesto.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-proyecto',
@@ -23,6 +26,8 @@ export class ProyectoComponent implements OnInit {
 
   constructor(private proyectoService: ProyectoService,
               private busquedasService: BusquedasService,
+              private presupuestoService: PresupuestoService,
+              private router: Router,
               private fb: FormBuilder) { }
 
   ngOnInit(): void {
@@ -91,6 +96,32 @@ export class ProyectoComponent implements OnInit {
       });
       }
     })
+  }
+
+  verificaPresupuesto(presupuestoId: string) {  
+    var auxPresupuesto: Presupuesto[] = [];
+    this.presupuestoService.cargarPresupuesto()
+    .subscribe( resp => {   
+      for (let index = 0; index < resp.length; index++) {
+        if(resp[index].proyectoId === null) {
+          
+        } else {
+          if(resp[index].proyectoId === presupuestoId){
+            auxPresupuesto.push(resp[index]);
+          }
+        }
+      }
+      if(auxPresupuesto.length >= 1) {
+        Swal.fire(
+          'No puede crear mas presupuesto para este proyecto',
+          '',
+          'error'
+        )
+        this.router.navigateByUrl(`dashboard/proyecto`)
+      } else {
+        this.router.navigateByUrl(`/dashboard/presupuestoc/nuevo/${presupuestoId}`)
+      }
+    })    
   }
 
 }

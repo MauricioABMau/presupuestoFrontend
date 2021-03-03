@@ -2,17 +2,17 @@ import { Usuario } from '../interfaces/usuario.interface';
 
 interface _MaterialItem {
     descripcion: string,
-    unidad: ConstrainDouble,
-    cantidad: ConstrainDouble,
-    precio_producto: ConstrainDouble,
+    unidad: number,
+    cantidad: number,
+    precio_producto: number,
     id?: string    
 }
 
 export class  Material {
     constructor(
         public nombre_material: string,
-        public cantidad_material: ConstrainDouble,
-        public precio_material: ConstrainDouble,
+        public precio_material: number,
+        public cantidad_material: number,
         public item?: _MaterialItem,
         public usuario?: Usuario,
         public id?: string,

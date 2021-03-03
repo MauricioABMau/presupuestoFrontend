@@ -30,10 +30,9 @@ export class MaterialcComponent implements OnInit {
        this.idit = id;
     })
     this.materialForm = this.fb.group({
-      descripcion: ['', Validators.required],
-      unidad: ['', Validators.required],
-      cantidad: ['', Validators.required],
-      precio_producto: ['', Validators.required],
+      nombre_material: ['', Validators.required],
+      cantidad_material: ['', Validators.required],
+      precio_material: ['', Validators.required],
     });
     this.cargarMaterial();
     
@@ -57,10 +56,10 @@ export class MaterialcComponent implements OnInit {
       if(!material) {
         return this.router.navigateByUrl(`dashboard/material`)
       }
-      const{nombre_material, cantidad_material, precio_material} = material;
+      const{nombre_material, precio_material, cantidad_material} = material;
       console.log(material);
       this.materialSeleccionado = material;
-      this.materialForm.setValue({nombre_material, cantidad_material, precio_material})
+      this.materialForm.setValue({nombre_material, precio_material, cantidad_material})
     })
   }
 
@@ -81,7 +80,7 @@ export class MaterialcComponent implements OnInit {
       .subscribe((resp: any) => {
         console.log(resp);
         Swal.fire('Creado', `${id} creado correctamente`, 'success');
-        this.router.navigateByUrl(`dashboard/materialc/${resp.materialDB.id}`)
+        this.router.navigateByUrl(`dashboard/item`)
       })
     }
   }

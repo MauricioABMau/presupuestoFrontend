@@ -37,8 +37,8 @@
                         <thead>
                             <tr>
                                 <th>Nombre material</th>
-                                <th>Cantidad</th>
                                 <th>Precio </th>
+                                <th>Cantidad </th>
                                 <th class="w100 text-nowrap">Acciones</th>
                             </tr>
                         </thead>
@@ -46,8 +46,8 @@
                             <tr *ngFor="let material of materiales">
 
                                 <td> {{material.nombre_material}} </td>
-                                <td> {{material.cantidad_material}} </td>
                                 <td> {{material.precio_material}} </td>
+                                <td> {{material.cantidad_material}} </td>
 
                                 <td class="text-nowrap text-center">
                                     <a [routerLink]="['/dashboard/materialc', material.id]" class="cursor" data-toggle="tooltip" data-original-title="Guardar cambios"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a>

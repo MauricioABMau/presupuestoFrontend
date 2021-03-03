@@ -28,6 +28,7 @@ import { ItemvComponent } from './presupuesto/itemv.component';
 import { HerramientavComponent } from './item/herramientav.component';
 import { ManoObravComponent } from './item/mano-obrav.component';
 import { MaterialvComponent } from './item/materialv.component';
+import { GenerarPresupuestoComponent } from './generar-presupuesto/generar-presupuesto.component';
 const routes: Routes = [
     {
         path: 'dashboard', 
@@ -72,6 +73,8 @@ const routes: Routes = [
             {path: 'account-settings', component: AccountSettingsComponent, data: {titulo: 'Dashboard', subtitulo: 'Ajustes de tema'} },
             {path: 'perfil', component: PerfilComponent, data: {titulo: 'Perfil de usuario'} },
             {path: 'usuario', component: UsuarioComponent, data: {titulo: 'Usuarios'} },
+            
+            {path: 'generar/:id', component: GenerarPresupuestoComponent, data: {titulo: 'Generar'} },
         ]        
     },
 ];

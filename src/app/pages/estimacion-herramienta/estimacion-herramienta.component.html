@@ -39,6 +39,7 @@
                                 <th>Nombre herramienta</th>
                                 <th>Tipo</th>
                                 <th>Precio herramienta</th>
+                                <th>Cantidad herramienta</th>
                                 <th class="w100 text-nowrap">Acciones</th>
                             </tr>
                         </thead>
@@ -48,6 +49,7 @@
                                 <td> {{herramienta.nombre_herramienta}} </td>
                                 <td> {{herramienta.tipo}} </td>
                                 <td> {{herramienta.precio_herramienta}} </td>
+                                <td> {{herramienta.cantidad_herramienta}} </td>
 
                                 <td class="text-nowrap text-center">
                                     <a [routerLink]="['/dashboard/herramientac', herramienta.id]" class="cursor" data-toggle="tooltip" data-original-title="Guardar cambios"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a>

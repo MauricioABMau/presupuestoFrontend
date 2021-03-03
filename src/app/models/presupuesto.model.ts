@@ -8,11 +8,11 @@ interface _PresupuestoProyecto {
 }
 
 export class Presupuesto {
-    constructor(public presupuesto_total: ConstrainDouble,
-                public presupuesto_precio_unitario: ConstrainDouble,
-                public utilidad: ConstrainDouble,
-                public iva: ConstrainDouble,
-                public it: ConstrainDouble,
+    constructor(public presupuesto_total: number,
+                public presupuesto_precio_unitario: number,
+                public utilidad: number,
+                public iva: number,
+                public it: number,
                 public proyecto?: _PresupuestoProyecto,
                 public usuario?: Usuario,
                 public id?: string,

@@ -38,6 +38,7 @@
                             <tr>
                                 <th>cargo</th>
                                 <th>sueldo</th>
+                                <th>Nro Personal</th>
                                 <th class="w100 text-nowrap">Acciones</th>
                             </tr>
                         </thead>
@@ -46,6 +47,7 @@
 
                                 <td> {{manoObra.cargo}} </td>
                                 <td> {{manoObra.sueldo}} </td>
+                                <td> {{manoObra.nro_personal}} </td>
 
                                 <td class="text-nowrap text-center">
                                     <a [routerLink]="['/dashboard/manoObrac', manoObra.id]" class="cursor" data-toggle="tooltip" data-original-title="Guardar cambios"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a>

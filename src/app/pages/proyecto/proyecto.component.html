@@ -34,7 +34,7 @@
                     <div class="col">
                         <div class="text-right">
                             <a class="btn btn-right btn-primary" routerLink="/dashboard/proyectoc/nuevo">
-                                <i class="fa fa-hospital-o"></i> Crear proyecto
+                                Crear proyecto
                             </a>
                         </div>
                     </div>
@@ -49,7 +49,7 @@
                                 <th>Direccion</th>
                                 <th>Agregar Presupuesto</th>
                                 <th>Ver Presupuesto</th>
-
+                                <th>Generar Presupuesto</th>
                                 <th class="w100 text-nowrap">Acciones</th>
                             </tr>
                         </thead>
@@ -60,14 +60,20 @@
                                 <td> {{proyecto.departamento}} </td>
                                 <td> {{proyecto.direccion}} </td>
                                 <td>
-                                    <a class="btn btn-right btn-primary" [routerLink]="['/dashboard/presupuestoc/nuevo', proyecto.id]">
-                                        <i class="fa fa-hospital-o"></i> Crear presupuesto
+                                    <a class="btn btn-right btn-primary" style="color: white;" (click)="verificaPresupuesto(proyecto.id)">
+                                        Crear presupuesto
                                     </a>
                                 </td>
 
                                 <td>
                                     <a class="btn btn-right btn-primary" [routerLink]="['/dashboard/presupuestov/', proyecto.id]">
-                                        <i class="fa fa-hospital-o"></i> Ver presupuesto
+                                        Ver presupuesto
+                                    </a>
+                                </td>
+
+                                <td>
+                                    <a class="btn btn-right btn-primary" [routerLink]="['/dashboard/generar', proyecto.id]">
+                                        Generar presupuesto
                                     </a>
                                 </td>
 
@@ -75,6 +81,7 @@
                                     <a [routerLink]="['/dashboard/proyectoc', proyecto.id]" class="cursor" data-toggle="tooltip" data-original-title="Guardar cambios"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a>
                                     <a (click)="eliminarProyecto(proyecto)" class="cursor" data-toggle="tooltip" data-original-title="Borrar"> <i class="fa fa-close text-danger"></i> </a>
                                 </td>
+
                             </tr>
 
                         </tbody>

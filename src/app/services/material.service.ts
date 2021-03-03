@@ -27,8 +27,7 @@ export class MaterialService {
     }
   }
 
-  cargarMaterial() {
-    
+  cargarMaterial() {    
     const url = `${base_url}/material`;
     return this.http.get(url, this.headers)
     .pipe(

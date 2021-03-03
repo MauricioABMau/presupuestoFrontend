@@ -1,0 +1,181 @@
+<div class="row animated fadeIn fast" *ngIf="cargando">
+    <div class="col-12">
+        <div class="alert alert-info text-center">
+            <h4 class="alert-heading">Cargando</h4>
+            <i class="fa fa-spin fa-refresh fa-2x"></i>
+            <p class="mb-0">Por favor espere</p>
+        </div>
+    </div>
+</div>
+
+<div class="row" *ngIf="!cargando">
+    <div class="col-12">
+        <div class="card">
+
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-8">
+                        <h4 class="card-title">Presupuesto </h4>
+                        <h6 class="card-subtitle">Presupuesto registrados en mi aplicacion</h6>
+                    </div>
+
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Datos generales</th>
+                            </tr>
+
+                            <tr>
+                                <th>Presupuesto Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0 </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Descripcion</th>
+                                <th>Unidad</th>
+                                <th>Cantidad</th>
+                                <th>Precio Producto</th>
+                                <th>Costo Total</th>
+
+                            </tr>
+
+                            <th>1. Materiales</th>
+
+                        </thead>
+                        <tbody>
+
+                            <tr *ngFor="let material of materiales">
+                                <td> {{material.nombre_material}} </td>
+                                <td>material cantidad cada uno</td>
+                                <td>0 </td>
+                                <td>{{material.precio_material}}</td>
+                                <td> {{totalMaterial}} </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>2. Mano de obra</th>
+                            </tr>
+
+                            <tr>
+                                <th>mano Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{totalManoObra}}</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>3. Equipo, maquinaria y herramienta</th>
+                            </tr>
+
+                            <tr>
+                                <th>maquina Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td> {{totalHerramienta}} </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>4. Gastos generales y administrativos</th>
+                            </tr>
+
+                            <tr>
+                                <th>Gastos generales = % de 1 + 2 + 3</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td> </td>
+                                <td>
+                                    {{total}}
+                                </td>
+                            </tr>
+
+
+
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Utilidad</th>
+                            </tr>
+
+                            <tr>
+                                <th>utilidad</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0 </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Impuesto</th>
+                            </tr>
+
+                            <tr>
+                                <th>Presupuesto Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0 </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -75,8 +75,7 @@ export class ItemcComponent implements OnInit {
         Swal.fire('Actualizado', `${id} actualizado`, 'success')
       })
     } else {
-      //crear
-      
+      //crear      
       this.itemService.crearItem(this.itemForm.value, this.idpre)
       .subscribe((resp: any) => {
         console.log(resp);
