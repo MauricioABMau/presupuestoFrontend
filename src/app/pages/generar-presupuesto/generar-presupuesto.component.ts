@@ -12,6 +12,7 @@ import { MaterialService } from '../../services/material.service';
 import { HerramientaService } from '../../services/herramienta.service';
 import { ManoObraService } from '../../services/mano-obra.service';
 import { Herramienta } from '../../models/herramienta.model';
+import { ManoObra } from '../../models/manoObra.model';
 
 @Component({
   selector: 'app-generar-presupuesto',
@@ -31,11 +32,13 @@ export class GenerarPresupuestoComponent implements OnInit {
   public gastos: Gastos[] = [];
   public materiales: Material[] = [];
   public herramientas: Herramienta[] = [];
+  public manoObra: ManoObra[] = [];
   
   public total: number = 0;
   public totalMaterial: number = 0;
   public totalHerramienta: number = 0;
   public totalManoObra: number = 0;
+  public totalGasto: number = 0;
   
 
   constructor(private proyectoService: ProyectoService,
@@ -63,7 +66,7 @@ export class GenerarPresupuestoComponent implements OnInit {
       this.idpre = this.cargarIdPre(presupuesto);
       this.cargarGasto(this.idpre);
       this.cargarItem(this.idpre);
-
+      this.presupuestos = presupuesto;
     })
   }
   
@@ -103,7 +106,6 @@ export class GenerarPresupuestoComponent implements OnInit {
           if(resp[index].presupuestoId === idpre){
             this.idg = resp[index].id
             this.gastos.push(resp[index]);
-            console.log(this.gastos);
             this.total = this.calcularGasto(this.gastos);
           }
         }
@@ -138,11 +140,11 @@ export class GenerarPresupuestoComponent implements OnInit {
           console.log('error');
         }         
         if(resp[index].itemId === idI){
-          this.totalMaterial = this.totalMaterial + resp[index].precio_material;
+          this.totalMaterial = Number(this.totalMaterial) + (Number(resp[index].precio_material) * Number(resp[index].cantidad_material))
+          console.log(this.totalMaterial + ' es el total');
           this.materiales.push(resp[index]);
           console.log(this.materiales);
-        }
-        
+        }        
       }
     })
     
@@ -157,7 +159,7 @@ export class GenerarPresupuestoComponent implements OnInit {
           console.log('error');
         } 
         if(resp[index].itemId === idI){
-          this.totalHerramienta = this.totalHerramienta + resp[index].precio_herramienta;
+          this.totalHerramienta = Number(this.totalHerramienta) + (Number(resp[index].precio_herramienta) * Number(resp[index].cantidad_herramienta));
           console.log('total herramienta: ' + this.totalHerramienta);
           this.herramientas.push(resp[index]);
         }        
@@ -174,6 +176,7 @@ export class GenerarPresupuestoComponent implements OnInit {
         } 
         if(resp[index].itemId === idI){
           this.totalManoObra = this.totalManoObra + resp[index].sueldo;
+          this.manoObra.push(resp[index]);
         }        
       }
     })    

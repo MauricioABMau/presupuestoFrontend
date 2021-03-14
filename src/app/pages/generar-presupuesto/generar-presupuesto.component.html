@@ -15,7 +15,7 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-8">
-                        <h4 class="card-title">Presupuesto </h4>
+                        <h4 class="card-title">PRESUPUESTO </h4>
                         <h6 class="card-subtitle">Presupuesto registrados en mi aplicacion</h6>
                     </div>
 
@@ -24,7 +24,7 @@
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th>Datos generales</th>
+                                <th>DATOS GENERALES</th>
                             </tr>
 
                             <tr>
@@ -49,22 +49,17 @@
                                 <th>Cantidad</th>
                                 <th>Precio Producto</th>
                                 <th>Costo Total</th>
-
                             </tr>
-
-                            <th>1. Materiales</th>
-
+                            <th>1. MATERIALES</th>
                         </thead>
                         <tbody>
-
                             <tr *ngFor="let material of materiales">
-                                <td> {{material.nombre_material}} </td>
+                                <td>{{material.nombre_material}}</td>
                                 <td>material cantidad cada uno</td>
-                                <td>0 </td>
+                                <td>{{material.cantidad_material}} </td>
                                 <td>{{material.precio_material}}</td>
                                 <td> {{totalMaterial}} </td>
                             </tr>
-
                         </tbody>
                     </table>
                 </div>
@@ -73,18 +68,22 @@
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th>2. Mano de obra</th>
+                                <th>Descripcion</th>
+                                <th>Unidad</th>
+                                <th>Cantidad</th>
+                                <th>Precio Producto</th>
+                                <th>Costo Total</th>
                             </tr>
-
-                            <tr>
-                                <th>mano Total</th>
-                            </tr>
+                            <th>2. MANO DE OBRA</th>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>{{totalManoObra}}</td>
+                            <tr *ngFor="let manoObra of manoObra">
+                                <td>{{manoObra.cargo}}</td>
+                                <td>material cantidad cada uno</td>
+                                <td>{{manoObra.nro_personal}} </td>
+                                <td>{{manoObra.sueldo}}</td>
+                                <td> {{totalManoObra}} </td>
                             </tr>
-
                         </tbody>
                     </table>
                 </div>
@@ -93,15 +92,20 @@
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th>3. Equipo, maquinaria y herramienta</th>
+                                <th>Descripcion</th>
+                                <th>Unidad</th>
+                                <th>Cantidad</th>
+                                <th>Precio Producto</th>
+                                <th>Costo Total</th>
                             </tr>
-
-                            <tr>
-                                <th>maquina Total</th>
-                            </tr>
+                            <th>3. EQUIPO, MAQUINARIA Y HERRAMIENTA</th>
                         </thead>
                         <tbody>
-                            <tr>
+                            <tr *ngFor="let herramienta of herramientas">
+                                <td>{{herramienta.nombre_herramienta}}</td>
+                                <td>material cantidad cada uno</td>
+                                <td>{{herramienta.cantidad_herramienta}} </td>
+                                <td>{{herramienta.precio_herramienta}}</td>
                                 <td> {{totalHerramienta}} </td>
                             </tr>
 
@@ -113,18 +117,20 @@
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th>4. Gastos generales y administrativos</th>
+                                <th>4. GASTOS GENERALES Y ADMINISTRATIVOS</th>
                             </tr>
 
                             <tr>
-                                <th>Gastos generales = % de 1 + 2 + 3</th>
+                                <th>Gastos generales</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td> </td>
+                                <td>{{total}}</td>
+                                <td>{{(totalHerramienta + totalManoObra + totalMaterial)}}</td>
                                 <td>
-                                    {{total}}
+                                    {{(total/100) * (totalHerramienta + totalManoObra + totalMaterial)}}
                                 </td>
                             </tr>
 
@@ -138,18 +144,20 @@
                     <table class="table table-bordered">
                         <thead>
                             <tr>
+                                <th>5. UTILIDAD</th>
+                            </tr>
+                            <tr>
                                 <th>Utilidad</th>
                             </tr>
 
-                            <tr>
-                                <th>utilidad</th>
-                            </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>0 </td>
+                            <tr *ngFor="let presupuesto of presupuestos">
+                                <td> </td>
+                                <td>{{presupuesto.utilidad}}</td>
+                                <td>{{(totalHerramienta + totalManoObra + totalMaterial)+((total/100) * (totalHerramienta + totalManoObra + totalMaterial))}} </td>
+                                <td>{{((totalHerramienta + totalManoObra + totalMaterial)+(total/100) * (totalHerramienta + totalManoObra + totalMaterial)) * (presupuesto.utilidad/100)}} </td>
                             </tr>
-
                         </tbody>
                     </table>
                 </div>
@@ -158,16 +166,29 @@
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th>Impuesto</th>
+                                <th>6. IMPUESTO</th>
                             </tr>
-
                             <tr>
-                                <th>Presupuesto Total</th>
+                                <th>Impuesto</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>0 </td>
+                            <tr *ngFor="let presupuesto of presupuestos">
+                                <td> </td>
+                                <td>{{presupuesto.it}}</td>
+                                <td>{{(totalHerramienta + totalManoObra + totalMaterial)+((total/100) * (totalHerramienta + totalManoObra + totalMaterial)) + (((totalHerramienta + totalManoObra + totalMaterial)+(total/100) * (totalHerramienta + totalManoObra
+                                    + totalMaterial)) * (presupuesto.utilidad/100))}} </td>
+                                <td>{{((totalHerramienta + totalManoObra + totalMaterial)+((total/100) * (totalHerramienta + totalManoObra + totalMaterial)) + (((totalHerramienta + totalManoObra + totalMaterial)+(total/100) * (totalHerramienta + totalManoObra
+                                    + totalMaterial)) * (presupuesto.utilidad/100))) * (presupuesto.it/100)}}</td>
+                            </tr>
+                            <tr *ngFor="let presupuesto of presupuestos">
+
+                                <td> TOTAL PRECIO UNITARIO </td>
+                                <td></td>
+                                <td></td>
+                                <td> {{(totalHerramienta + totalManoObra + totalMaterial)+((total/100) * (totalHerramienta + totalManoObra + totalMaterial)) + (((totalHerramienta + totalManoObra + totalMaterial)+(total/100) * (totalHerramienta + totalManoObra
+                                    + totalMaterial)) * (presupuesto.utilidad/100))+((totalHerramienta + totalManoObra + totalMaterial)+((total/100) * (totalHerramienta + totalManoObra + totalMaterial)) + (((totalHerramienta + totalManoObra + totalMaterial)+(total/100)
+                                    * (totalHerramienta + totalManoObra + totalMaterial)) * (presupuesto.utilidad/100))) * (presupuesto.it/100)}}</td>
                             </tr>
 
                         </tbody>
