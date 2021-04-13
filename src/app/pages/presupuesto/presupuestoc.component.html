@@ -5,14 +5,13 @@
             <div class="card-body">
 
                 <h4 class="card-title">Presupuesto</h4>
-                <h6 class="card-subtitle">Actualizar informacion</h6>
                 <form class="form-horizontal p-t-20" [formGroup]="presupuestoForm" (submit)="guardarPresupuesto()">
 
                     <div class="form-group row">
                         <label for="exampleInputuname" class="col-sm-3 control-label">Presupuesto total</label>
                         <div class="col-sm-9">
                             <div class="input-group">
-                                <div class="input-group-addon"><i class="ti-user"></i></div>
+                                <div class="input-group-addon"><i class=""></i></div>
                                 <input type="text" formControlName="presupuesto_total" class="form-control" id="exampleInputuname" placeholder="Presupuesto total">
                             </div>
                         </div>
@@ -54,6 +53,56 @@
                             <div class="input-group">
                                 <div class="input-group-addon"><i class=""></i></div>
                                 <input type="text" formControlName="it" class="form-control" id="exampleInputuname" placeholder="It">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="exampleInputuname" class="col-sm-3 control-label">Actividad</label>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class=""></i></div>
+                                <input type="text" formControlName="actividad" class="form-control" id="exampleInputuname" placeholder="Actividad">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="exampleInputuname" class="col-sm-3 control-label">Unidad</label>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class=""></i></div>
+                                <input type="text" formControlName="unidad" class="form-control" id="exampleInputuname" placeholder="Unidad">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="exampleInputuname" class="col-sm-3 control-label">Codigo</label>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class=""></i></div>
+                                <input type="text" formControlName="codigo" class="form-control" id="exampleInputuname" placeholder="Codigo">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="exampleInputuname" class="col-sm-3 control-label">Numero</label>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class=""></i></div>
+                                <input type="text" formControlName="numero" class="form-control" id="exampleInputuname" placeholder="Numero">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="exampleInputuname" class="col-sm-3 control-label">Moneda</label>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class=""></i></div>
+                                <input type="text" formControlName="moneda" class="form-control" id="exampleInputuname" placeholder="Moneda">
                             </div>
                         </div>
                     </div>

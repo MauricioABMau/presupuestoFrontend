@@ -36,6 +36,11 @@ export class PresupuestocComponent implements OnInit {
       utilidad: ['', Validators.required],
       iva: ['', Validators.required],
       it: ['', Validators.required],
+      actividad: ['', Validators.required],
+      unidad: ['', Validators.required],
+      codigo: ['', Validators.required],
+      numero: ['', Validators.required],
+      moneda: ['', Validators.required]
     });
     this.cargarPresupuesto();
     
@@ -59,10 +64,10 @@ export class PresupuestocComponent implements OnInit {
       if(!presupuesto) {
         return this.router.navigateByUrl(`dashboard/presupuesto`)
       }
-      const{presupuesto_total, presupuesto_precio_unitario, utilidad, iva, it} = presupuesto;
+      const{presupuesto_total, presupuesto_precio_unitario, utilidad, iva, it, actividad, unidad, codigo, numero, moneda} = presupuesto;
       console.log(presupuesto);
       this.presupuestoSeleccionado = presupuesto;
-      this.presupuestoForm.setValue({presupuesto_total, presupuesto_precio_unitario, utilidad, iva, it})
+      this.presupuestoForm.setValue({presupuesto_total, presupuesto_precio_unitario, utilidad, iva, it, actividad, unidad, codigo, numero, moneda})
     })
   }
 

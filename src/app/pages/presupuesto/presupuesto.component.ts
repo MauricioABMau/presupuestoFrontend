@@ -40,7 +40,12 @@ export class PresupuestoComponent implements OnInit {
       presupuesto_precio_unitario: ['', Validators.required],
       utilidad: ['', Validators.required],
       iva: ['', Validators.required],
-      it: ['', Validators.required]
+      it: ['', Validators.required],
+      actividad: ['', Validators.required],
+      unidad: ['', Validators.required],
+      codigo: ['', Validators.required],
+      numero: ['', Validators.required],
+      moneda: ['', Validators.required]
     })
   }
 

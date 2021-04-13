@@ -23,17 +23,26 @@
                 <div class="table-responsive">
                     <table class="table table-bordered">
                         <thead>
+                            <th>DATOS GENERALES</th>
                             <tr>
-                                <th>DATOS GENERALES</th>
-                            </tr>
-
-                            <tr>
-                                <th>Presupuesto Total</th>
+                                <th>Proyecto</th>
+                                <th>Actividad</th>
+                                <th>Unidad</th>
+                                <th>Nro.</th>
+                                <th>Codigo</th>
+                                <th>Fecha</th>
+                                <th>Moneda</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>0 </td>
+                            <tr *ngFor="let presupuesto of presupuestos">
+                                <td>{{presupuesto.proyecto.nombre_proyecto}}</td>
+                                <td>{{presupuesto.actividad}}</td>
+                                <td>{{presupuesto.unidad}}</td>
+                                <td>{{presupuesto.numero}}</td>
+                                <td>{{presupuesto.codigo}}</td>
+                                <td>fecha</td>
+                                <td>{{presupuesto.moneda}}</td>
                             </tr>
 
                         </tbody>

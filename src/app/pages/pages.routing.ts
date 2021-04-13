@@ -2,6 +2,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 
 import { AuthGuard } from '../guards/auth.guard';
+import { AdminGuard } from '../guards/admin.guard';
 
 import { PagesComponent } from './pages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -35,11 +36,11 @@ const routes: Routes = [
         component: PagesComponent,
         canActivate: [AuthGuard],
         children: [
-            {path: '', component: DashboardComponent, data: {titulo: 'Dashboard', subtitulo: 'Dashboard'}},
+            {path: '', component: DashboardComponent, data: {titulo: 'Principal', subtitulo: 'Dashboard'}},
             
-            {path: 'proyecto', component: ProyectoComponent, data: {titulo: 'Dashboard', subtitulo: 'Proyecto'} },
-            {path: 'proyectoc/:id', component: ProyectocComponent, data: {titulo: 'Dashboard', subtitulo: 'Proyecto'} },
-            {path: 'presupuestov/:id', component: ProyectovComponent, data: {titulo: 'Dashboard', subtitulo: 'Proyecto'} },
+            {path: 'proyecto', component: ProyectoComponent, data: {titulo: 'Principal', subtitulo: 'Proyecto'} },
+            {path: 'proyectoc/:id', component: ProyectocComponent, data: {titulo: 'Principal', subtitulo: 'Proyecto'} },
+            {path: 'presupuestov/:id', component: ProyectovComponent, data: {titulo: 'Principal', subtitulo: 'Proyecto'} },
 
             {path: 'presupuesto', component: PresupuestoComponent, data: {titulo: 'Proyecto', subtitulo: 'Presupuesto'} },
             {path: 'presupuestoc/:id', component: PresupuestocComponent, data: {titulo: 'Proyecto', subtitulo: 'Presupuesto'} },
@@ -50,10 +51,10 @@ const routes: Routes = [
             {path: 'gastoc/nuevo/:id', component: GastocComponent, data: {titulo: 'Proyecto', subtitulo: 'Gasto'} },
             {path: 'gastov/:id', component: GastovComponent, data: {titulo: 'Proyecto', subtitulo: 'Gasto'} },
 
-            {path: 'item', component: ItemComponent, data: {titulo: 'Dashboard', subtitulo: 'Item'} },
-            {path: 'itemc/:id', component: ItemcComponent, data: {titulo: 'Dashboard', subtitulo: 'Item'} },
-            {path: 'itemc/nuevo/:id', component: ItemcComponent, data: {titulo: 'Dashboard', subtitulo: 'Item'} },
-            {path: 'itemv/:id', component: ItemvComponent, data: {titulo: 'Dashboard', subtitulo: 'Item'} },
+            {path: 'item', component: ItemComponent, data: {titulo: 'Principal', subtitulo: 'Item'} },
+            {path: 'itemc/:id', component: ItemcComponent, data: {titulo: 'Principal', subtitulo: 'Item'} },
+            {path: 'itemc/nuevo/:id', component: ItemcComponent, data: {titulo: 'Principal', subtitulo: 'Item'} },
+            {path: 'itemv/:id', component: ItemvComponent, data: {titulo: 'Principal', subtitulo: 'Item'} },
 
             {path: 'estimacionHerramienta', component: EstimacionHerramientaComponent, data: {titulo: 'Item', subtitulo: 'Herramienta'} },
             {path: 'estimacionHerramientac/:id', component: HerramientacComponent, data: {titulo: 'Item', subtitulo: 'Herramienta'} },
@@ -70,9 +71,10 @@ const routes: Routes = [
             {path: 'estimacionMaterialc/nuevo/:id', component: MaterialcComponent, data: {titulo: 'Item', subtitulo: 'Material'} },
             {path: 'estimacionMaterialv/:id', component: MaterialvComponent, data: {titulo: 'Item', subtitulo: 'Material'} },
         
-            {path: 'account-settings', component: AccountSettingsComponent, data: {titulo: 'Dashboard', subtitulo: 'Ajustes de tema'} },
+            {path: 'account-settings', component: AccountSettingsComponent, data: {titulo: 'Principal', subtitulo: 'Ajustes de tema'} },
             {path: 'perfil', component: PerfilComponent, data: {titulo: 'Perfil de usuario'} },
-            {path: 'usuario', component: UsuarioComponent, data: {titulo: 'Usuarios'} },
+
+            {path: 'usuario', canActivate: [AdminGuard], component: UsuarioComponent, data: {titulo: 'Usuarios'} },
             
             {path: 'generar/:id', component: GenerarPresupuestoComponent, data: {titulo: 'Generar'} },
         ]        
