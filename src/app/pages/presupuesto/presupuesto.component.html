@@ -44,8 +44,8 @@
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th>Presupuesto Total</th>
-                                <th>Presupuesto de precio unitario</th>
+                                <!-- <th>Presupuesto Total</th>
+                                <th>Presupuesto de precio unitario</th> -->
                                 <th>Utilidad</th>
                                 <th>IVA</th>
                                 <th>IT</th>
@@ -54,10 +54,9 @@
                                 <th>Codigo</th>
                                 <th>Numero</th>
                                 <th>Moneda</th>
-                                <th>Ver gasto</th>
-                                <th>Ver item</th>
-                                <th>Crear gasto</th>
-                                <th>Crear item</th>
+                                <th>Ver </th>
+                                <th>Crear </th>
+
 
                                 <th class="w100 text-nowrap">Acciones</th>
                             </tr>
@@ -66,8 +65,8 @@
                             <tr *ngFor="let presupuesto of presupuestos">
 
 
-                                <td> {{presupuesto.presupuesto_total}} </td>
-                                <td> {{presupuesto.presupuesto_precio_unitario}} </td>
+                                <!-- <td> {{presupuesto.presupuesto_total}} </td>
+                                <td> {{presupuesto.presupuesto_precio_unitario}} </td> -->
                                 <td> {{presupuesto.utilidad}} </td>
                                 <td> {{presupuesto.iva}} </td>
                                 <td> {{presupuesto.it}} </td>
@@ -77,29 +76,23 @@
                                 <td> {{presupuesto.numero}} </td>
                                 <td> {{presupuesto.moneda}} </td>
                                 <td>
-                                    <a class="btn btn-right btn-primary" [routerLink]="['/dashboard/gastov/', presupuesto.id]">
+                                    <tr><a class="btn btn-right btn-primary" [routerLink]="['/dashboard/gastov/', presupuesto.id]">
                                         Ver gasto
-                                    </a>
-                                </td>
-                                <td>
-                                    <a class="btn btn-right btn-primary" [routerLink]="['/dashboard/itemv/', presupuesto.id]">
+                                    </a></tr>
+                                    <tr><a class="btn btn-right btn-primary" [routerLink]="['/dashboard/itemv/', presupuesto.id]">
                                         Ver item
-                                    </a>
+                                    </a></tr>
+
                                 </td>
+
                                 <td>
-                                    <a class="btn btn-right btn-primary" style="color: white;" (click)="verificaGasto(presupuesto.id)">
+                                    <tr><a class="btn btn-right btn-primary" style="color: white;" (click)="verificaGasto(presupuesto.id)">
                                         Crear gasto
-                                    </a>
-                                </td>
-
-                                <td>
-                                    <a class="btn btn-right btn-primary" style="color: white;" (click)="verificaItem(presupuesto.id)">
+                                    </a></tr>
+                                    <tr><a class="btn btn-right btn-primary" style="color: white;" (click)="verificaItem(presupuesto.id)">
                                         Crear item
-                                    </a>
+                                    </a></tr>
                                 </td>
-
-
-
                                 <td class="text-nowrap text-center">
                                     <a [routerLink]="['/dashboard/presupuestoc', presupuesto.id]" class="cursor" data-toggle="tooltip" data-original-title="Guardar cambios"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a>
                                     <a (click)="eliminarPresupuesto(presupuesto)" class="cursor" data-toggle="tooltip" data-original-title="Borrar"> <i class="fa fa-close text-danger"></i> </a>

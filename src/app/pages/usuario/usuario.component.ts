@@ -101,6 +101,13 @@ export class UsuarioComponent implements OnInit, OnDestroy {
     })
   }
 
+  cambiarEstado(usuario: Usuario) {
+    this.usuarioService.guardarUsuario(usuario)
+    .subscribe(resp => {
+      console.log(resp);
+    })
+  }
+
   abrirModal(usuario: Usuario ) {
     this.modalImagenService.abrirModal('usuarios', usuario.id, usuario.imagen);
   }

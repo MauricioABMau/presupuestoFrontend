@@ -31,9 +31,9 @@ export class ItemcComponent implements OnInit {
     })
     this.itemForm = this.fb.group({
       descripcion: ['', Validators.required],
-      unidad: ['', Validators.required],
-      cantidad: ['', Validators.required],
-      precio_producto: ['', Validators.required],
+      unidad: ['0'],
+      cantidad: ['0'],
+      precio_producto: ['0'],
     });
     this.cargarItem();
     

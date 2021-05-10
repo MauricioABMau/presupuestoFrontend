@@ -31,6 +31,7 @@ export class MaterialcComponent implements OnInit {
     })
     this.materialForm = this.fb.group({
       nombre_material: ['', Validators.required],
+      unidad: ['', Validators.required],
       cantidad_material: ['', Validators.required],
       precio_material: ['', Validators.required],
     });
@@ -56,10 +57,10 @@ export class MaterialcComponent implements OnInit {
       if(!material) {
         return this.router.navigateByUrl(`dashboard/material`)
       }
-      const{nombre_material, precio_material, cantidad_material} = material;
+      const{nombre_material, unidad, precio_material, cantidad_material} = material;
       console.log(material);
       this.materialSeleccionado = material;
-      this.materialForm.setValue({nombre_material, precio_material, cantidad_material})
+      this.materialForm.setValue({nombre_material, unidad, precio_material, cantidad_material})
     })
   }
 
@@ -72,6 +73,7 @@ export class MaterialcComponent implements OnInit {
       this.materialService.actualizarMaterial(data)
       .subscribe(resp => {
         Swal.fire('Actualizado', `${id} actualizado`, 'success')
+        this.router.navigateByUrl(`dashboard/estimacionMaterial`)
       })
     } else {
       //crear

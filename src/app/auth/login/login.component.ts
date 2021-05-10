@@ -35,15 +35,22 @@ export class LoginComponent implements OnInit {
   login() {
     this.usuarioService.login(this.loginForm.value)
     .subscribe(resp => {
-      if(this.loginForm.get('remember').value){
-        localStorage.setItem('email', this.loginForm.get('email').value)
+      console.log(resp);
+      if(resp.estado === true) {
+        if(this.loginForm.get('remember').value){
+          localStorage.setItem('email', this.loginForm.get('email').value)
+        } else {
+          localStorage.removeItem('email');
+        }
+        //Navegar al dashboard
+        this.router.navigateByUrl('/');
       } else {
-        localStorage.removeItem('email');
+        Swal.fire('No esta habilitado por el Administrador', this.loginForm.get('email').value , 'error');
+        this.router.navigateByUrl('/login');
       }
-      //Navegar al dashboard
-      this.router.navigateByUrl('/');
     }, (err) => {
       Swal.fire('Error', err.error.msg, 'error');
+      console.log(err.error.msg);
     });
   }
 
@@ -75,7 +82,6 @@ export class LoginComponent implements OnInit {
               this.router.navigateByUrl('/');
             })
           });
-
         }, (error) => {
           alert(JSON.stringify(error, undefined, 2));
         });

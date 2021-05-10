@@ -73,6 +73,7 @@ export class HerramientacComponent implements OnInit {
       this.herramientaService.actualizarHerramienta(data)
       .subscribe(resp => {
         Swal.fire('Actualizado', `${id} actualizado`, 'success')
+        this.router.navigateByUrl(`dashboard/estimacionHerramienta`)
       })
     } else {
       //crear

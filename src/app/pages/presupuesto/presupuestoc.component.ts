@@ -31,11 +31,11 @@ export class PresupuestocComponent implements OnInit {
     })
     
     this.presupuestoForm = this.fb.group({
-      presupuesto_total: ['', Validators.required],
-      presupuesto_precio_unitario: ['', Validators.required],
-      utilidad: ['', Validators.required],
-      iva: ['', Validators.required],
-      it: ['', Validators.required],
+      presupuesto_total: ['0'],
+      presupuesto_precio_unitario: ['0'],
+      utilidad: ['10', Validators.required],
+      iva: ['14.94', Validators.required],
+      it: ['3.09', Validators.required],
       actividad: ['', Validators.required],
       unidad: ['', Validators.required],
       codigo: ['', Validators.required],
@@ -88,7 +88,7 @@ export class PresupuestocComponent implements OnInit {
       .subscribe((resp: any) => {
         console.log(resp);
         Swal.fire('Creado', `${id} creado correctamente`, 'success');
-        this.router.navigateByUrl(`dashboard/presupuestoc/${resp.presupuestoDB.id}`)
+        this.router.navigateByUrl(`dashboard/presupuesto`)
       })
     }
   }

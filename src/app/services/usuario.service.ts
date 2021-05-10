@@ -33,7 +33,7 @@ export class UsuarioService {
     return localStorage.getItem('token') || '';
   }
 
-  get role(): 'ADMIN_ROLE' | 'USER_ROLE' {
+  get rol(): 'ADMIN_ROLE' | 'USER_ROLE' {
     return this.usuario.rol;
   }
 
@@ -52,7 +52,6 @@ export class UsuarioService {
   googleInit() {
 
     return new Promise((resolve: any) => {
-      console.log('entro');
       gapi.load('auth2', () => {
         this.auth2 = gapi.auth2.init({
           client_id: '257796411891-oq3ll570dskqtmqcpsrehpiht3b0e5ab.apps.googleusercontent.com',
@@ -60,7 +59,7 @@ export class UsuarioService {
         });
         resolve();
       });
-
+    
     })
   }
 
@@ -89,7 +88,6 @@ export class UsuarioService {
         //arreglar la posicion
         const {nombre, apellido, email, estado, password, google, imagen = '', rol, id} = resp.usuario;
         this.usuario = new Usuario(nombre, apellido, email, estado, password, google, imagen, rol, id)
-        console.log(this.usuario);
         this.guardarLocalStorage(resp.token, resp.menu);
 
         return true;
@@ -107,13 +105,12 @@ export class UsuarioService {
     )
   }
 
-  actualizarPerfil(data: { email: string, nombre: string, rol: string, estado: boolean, apellido: string}) {
+  actualizarPerfil(data: { email: string, nombre: string, role: string, estado: boolean, apellido: string}) {
     data = {
       ...data,
-      rol: "",
-      estado: true,
-      apellido: "",
     }
+    console.log('data');
+    console.log(data);
     return this.http.put(`${base_url}/usuario/${this.uid}`, data, this.headers)
   }
   
@@ -122,6 +119,8 @@ export class UsuarioService {
     .pipe(
       tap((resp: any ) => {
         this.guardarLocalStorage(resp.token, resp.menu);
+        console.log('resp service');
+        console.log(resp.estado);
       })
     )
   }

@@ -28,6 +28,7 @@ export class EstimacionMaterialComponent implements OnInit {
     this.cargarMaterial();
     this.materialForm = this.fb.group({
       nombre_material: ['', Validators.required],
+      unidad: ['', Validators.required],
       precio_material: ['', Validators.required],
       cantidad_material: ['', Validators.required],
     })

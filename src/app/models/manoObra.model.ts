@@ -12,6 +12,7 @@ export class  ManoObra {
     constructor(
         public cargo: string,
         public sueldo: number,
+        public horas: number,
         public nro_personal: number,
         public item?: _ManoObraItem,
         public usuario?: Usuario,

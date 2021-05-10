@@ -47,9 +47,8 @@
                                 <th>Nombre del proyecto</th>
                                 <th>Departamento</th>
                                 <th>Direccion</th>
-                                <th>Agregar Presupuesto</th>
-                                <th>Ver Presupuesto</th>
-                                <th>Generar Presupuesto</th>
+                                <th></th>
+
                                 <th class="w100 text-nowrap">Acciones</th>
                             </tr>
                         </thead>
@@ -59,22 +58,18 @@
                                 <td> {{proyecto.nombre_proyecto}} </td>
                                 <td> {{proyecto.departamento}} </td>
                                 <td> {{proyecto.direccion}} </td>
+
+
                                 <td>
-                                    <a class="btn btn-right btn-primary" style="color: white;" (click)="verificaPresupuesto(proyecto.id)">
+                                    <tr><a class="btn btn-right btn-primary" style="color: white;" (click)="verificaPresupuesto(proyecto.id)">
                                         Crear presupuesto
-                                    </a>
-                                </td>
-
-                                <td>
-                                    <a class="btn btn-right btn-primary" [routerLink]="['/dashboard/presupuestov/', proyecto.id]">
+                                    </a></tr>
+                                    <tr> <a class="btn btn-right btn-primary" [routerLink]="['/dashboard/presupuestov/', proyecto.id]">
                                         Ver presupuesto
-                                    </a>
-                                </td>
-
-                                <td>
-                                    <a class="btn btn-right btn-primary" [routerLink]="['/dashboard/generar', proyecto.id]">
+                                    </a></tr>
+                                    <tr><a class="btn btn-right btn-primary" [routerLink]="['/dashboard/generar', proyecto.id]">
                                         Generar presupuesto
-                                    </a>
+                                    </a></tr>
                                 </td>
 
                                 <td class="text-nowrap text-center">

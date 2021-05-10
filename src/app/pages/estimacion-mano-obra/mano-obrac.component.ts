@@ -32,6 +32,7 @@ export class ManoObracComponent implements OnInit {
     this.manoObraForm = this.fb.group({
       cargo: ['', Validators.required],
       sueldo: ['', Validators.required],
+      horas: ['', Validators.required],
       nro_personal: ['', Validators.required],
     });
     this.cargarManoObra();
@@ -71,7 +72,8 @@ export class ManoObracComponent implements OnInit {
       const data = { ...this.manoObraForm.value, id: this.manoObraSeleccionado.id}
       this.manoObraService.actualizarManoObra(data)
       .subscribe(resp => {
-        Swal.fire('Actualizado', `${id} actualizado`, 'success')
+        Swal.fire('Actualizado', `${id} actualizado`, 'success');
+        this.router.navigateByUrl(`dashboard/estimacionManoObra`);
       })
     } else {
       //crear

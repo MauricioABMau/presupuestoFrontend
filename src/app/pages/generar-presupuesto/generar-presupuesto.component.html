@@ -62,13 +62,19 @@
                             <th>1. MATERIALES</th>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let material of materiales">
+                            <tr *ngFor="let material of materiales; let indice = index">
                                 <td>{{material.nombre_material}}</td>
-                                <td>material cantidad cada uno</td>
+                                <td>{{material.unidad}}</td>
                                 <td>{{material.cantidad_material}} </td>
                                 <td>{{material.precio_material}}</td>
-                                <td> {{totalMaterial}} </td>
+                                <td>{{precioMaterial[indice]}}</td>
+
                             </tr>
+                            <td>Total Material</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td> {{totalMaterial}} </td>
                         </tbody>
                     </table>
                 </div>
@@ -86,12 +92,41 @@
                             <th>2. MANO DE OBRA</th>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let manoObra of manoObra">
+                            <tr *ngFor="let manoObra of manoObra; let indice = index">
                                 <td>{{manoObra.cargo}}</td>
-                                <td>material cantidad cada uno</td>
+                                <td>hr</td>
                                 <td>{{manoObra.nro_personal}} </td>
                                 <td>{{manoObra.sueldo}}</td>
+                                <td>{{sueldo[indice]}}</td>
+
+                            </tr>
+                            <tr>
+                                <td>SubTotal Mano de Obra</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
                                 <td> {{totalManoObra}} </td>
+                            </tr>
+                            <tr>
+                                <td>Carga Social</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>{{cargaSocial}}</td>
+                            </tr>
+                            <tr>
+                                <td>IVA</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>{{ivaMano}}</td>
+                            </tr>
+                            <tr>
+                                <td>Total Mano de Obra</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>{{totalManoObra2}}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -110,11 +145,18 @@
                             <th>3. EQUIPO, MAQUINARIA Y HERRAMIENTA</th>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let herramienta of herramientas">
+                            <tr *ngFor="let herramienta of herramientas; let indice = index">
                                 <td>{{herramienta.nombre_herramienta}}</td>
-                                <td>material cantidad cada uno</td>
+                                <td>hr</td>
                                 <td>{{herramienta.cantidad_herramienta}} </td>
                                 <td>{{herramienta.precio_herramienta}}</td>
+                                <td>{{precioHerramienta[indice]}}</td>
+                            </tr>
+                            <tr>
+                                <td>Total Herramienta</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
                                 <td> {{totalHerramienta}} </td>
                             </tr>
 
@@ -135,11 +177,13 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td> </td>
-                                <td>{{total}}</td>
-                                <td>{{(totalHerramienta + totalManoObra + totalMaterial)}}</td>
+                                <td>{{total}} </td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>{{(totalGasto2[0] + totalGasto2[1] + totalGasto2[2]).toFixed(2) }}</td>
                                 <td>
-                                    {{(total/100) * (totalHerramienta + totalManoObra + totalMaterial)}}
+                                    {{((total/100) * (totalGasto2[0] + totalGasto2[1] + totalGasto2[2])).toFixed(2)}}
                                 </td>
                             </tr>
 
@@ -164,8 +208,8 @@
                             <tr *ngFor="let presupuesto of presupuestos">
                                 <td> </td>
                                 <td>{{presupuesto.utilidad}}</td>
-                                <td>{{(totalHerramienta + totalManoObra + totalMaterial)+((total/100) * (totalHerramienta + totalManoObra + totalMaterial))}} </td>
-                                <td>{{((totalHerramienta + totalManoObra + totalMaterial)+(total/100) * (totalHerramienta + totalManoObra + totalMaterial)) * (presupuesto.utilidad/100)}} </td>
+                                <td>{{((totalGasto2[0] + totalGasto2[1] + totalGasto2[2])+((total/100) * (totalGasto2[0] + totalGasto2[1] + totalGasto2[2]))).toFixed(2)}} </td>
+                                <td>{{(((totalGasto2[0] + totalGasto2[1] + totalGasto2[2])+(total/100) * (totalGasto2[0] + totalGasto2[1] + totalGasto2[2])) * (presupuesto.utilidad/100)).toFixed(2)}} </td>
                             </tr>
                         </tbody>
                     </table>
@@ -185,19 +229,19 @@
                             <tr *ngFor="let presupuesto of presupuestos">
                                 <td> </td>
                                 <td>{{presupuesto.it}}</td>
-                                <td>{{(totalHerramienta + totalManoObra + totalMaterial)+((total/100) * (totalHerramienta + totalManoObra + totalMaterial)) + (((totalHerramienta + totalManoObra + totalMaterial)+(total/100) * (totalHerramienta + totalManoObra
-                                    + totalMaterial)) * (presupuesto.utilidad/100))}} </td>
-                                <td>{{((totalHerramienta + totalManoObra + totalMaterial)+((total/100) * (totalHerramienta + totalManoObra + totalMaterial)) + (((totalHerramienta + totalManoObra + totalMaterial)+(total/100) * (totalHerramienta + totalManoObra
-                                    + totalMaterial)) * (presupuesto.utilidad/100))) * (presupuesto.it/100)}}</td>
+                                <td>{{((totalGasto2[0] + totalGasto2[1] + totalGasto2[2])+((total/100) * (totalGasto2[0] + totalGasto2[1] + totalGasto2[2])) + (((totalGasto2[0] + totalGasto2[1] + totalGasto2[2])+(total/100) * (totalHerramienta + totalManoObra
+                                    + totalMaterial)) * (presupuesto.utilidad/100))).toFixed(2)}} </td>
+                                <td>{{(((totalGasto2[0] + totalGasto2[1] + totalGasto2[2])+((total/100) * (totalGasto2[0] + totalGasto2[1] + totalGasto2[2])) + (((totalGasto2[0] + totalGasto2[1] + totalGasto2[2])+(total/100) * (totalHerramienta + totalManoObra
+                                    + totalMaterial)) * (presupuesto.utilidad/100))) * (presupuesto.it/100)).toFixed(2)}}</td>
                             </tr>
                             <tr *ngFor="let presupuesto of presupuestos">
 
                                 <td> TOTAL PRECIO UNITARIO </td>
                                 <td></td>
                                 <td></td>
-                                <td> {{(totalHerramienta + totalManoObra + totalMaterial)+((total/100) * (totalHerramienta + totalManoObra + totalMaterial)) + (((totalHerramienta + totalManoObra + totalMaterial)+(total/100) * (totalHerramienta + totalManoObra
-                                    + totalMaterial)) * (presupuesto.utilidad/100))+((totalHerramienta + totalManoObra + totalMaterial)+((total/100) * (totalHerramienta + totalManoObra + totalMaterial)) + (((totalHerramienta + totalManoObra + totalMaterial)+(total/100)
-                                    * (totalHerramienta + totalManoObra + totalMaterial)) * (presupuesto.utilidad/100))) * (presupuesto.it/100)}}</td>
+                                <td> {{((totalGasto2[0] + totalGasto2[1] + totalGasto2[2])+((total/100) * (totalGasto2[0] + totalGasto2[1] + totalGasto2[2])) + (((totalGasto2[0] + totalGasto2[1] + totalGasto2[2])+(total/100) * (totalHerramienta + totalManoObra
+                                    + totalMaterial)) * (presupuesto.utilidad/100))+((totalGasto2[0] + totalGasto2[1] + totalGasto2[2])+((total/100) * (totalGasto2[0] + totalGasto2[1] + totalGasto2[2])) + (((totalGasto2[0] + totalGasto2[1] + totalGasto2[2])+(total/100)
+                                    * (totalGasto2[0] + totalGasto2[1] + totalGasto2[2])) * (presupuesto.utilidad/100))) * (presupuesto.it/100)).toFixed(2)}}</td>
                             </tr>
 
                         </tbody>

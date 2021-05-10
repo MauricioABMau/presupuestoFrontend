@@ -30,15 +30,15 @@ export class GastocComponent implements OnInit {
        this.idpre = id;
     })
     this.gastoForm = this.fb.group({
-      lugar: ['', Validators.required],
-      profesional: ['', Validators.required],
-      documentos_legales: ['', Validators.required],
-      costo_garantia_contratos: ['', Validators.required],
-      costo_operacion: ['', Validators.required],
-      costo_administrativo: ['', Validators.required],
-      gasto_profecional_especial: ['', Validators.required],
-      riesgo_imprevisto: ['', Validators.required],
-      movilizacion_demolicion: ['', Validators.required],
+      lugar: ['0.04', Validators.required],
+      profesional: ['0.21', Validators.required],
+      documentos_legales: ['0.10', Validators.required],
+      costo_garantia_contratos: ['1.95', Validators.required],
+      costo_operacion: ['6.18', Validators.required],
+      costo_administrativo: ['2.30', Validators.required],
+      gasto_profecional_especial: ['0.20', Validators.required],
+      riesgo_imprevisto: ['0.32', Validators.required],
+      movilizacion_demolicion: ['0.70', Validators.required],
     });
     this.cargarGastos();
     

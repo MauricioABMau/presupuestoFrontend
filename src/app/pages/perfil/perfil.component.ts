@@ -30,8 +30,8 @@ export class PerfilComponent implements OnInit {
     this.perfilForm = this.fb.group({
       nombre: [ this.usuario.nombre, Validators.required],
       apellido: [ this.usuario.apellido, Validators.required],
-      rol: [ this.usuario.rol, Validators.required],
-      estado: [ this.usuario.estado, Validators.required],
+      rol: [ this.usuario.rol],
+      estado: [ this.usuario.estado],
       email: [this.usuario.email, [Validators.required, Validators.email]]
     })
   }
@@ -39,14 +39,14 @@ export class PerfilComponent implements OnInit {
   actualizarPerfil() {
     console.log(this.perfilForm.value);
     this.usuarioService.actualizarPerfil(this.perfilForm.value)
-    .subscribe(resp => {
-      const {nombre, email, rol, estado, apellido} = this.perfilForm.value;
+    .subscribe(() => {
+      const {nombre, apellido, rol, estado, email } = this.perfilForm.value;
       this.usuario.nombre = nombre;
       this.usuario.apellido = apellido,
       this.usuario.rol = rol,
       this.usuario.estado = estado,
       this.usuario.email = email;
-
+     
       Swal.fire('Guardado', 'Cambios fueron guardados', 'success');
     }, (err) => {
       Swal.fire('Error', err.error.msg, 'error');

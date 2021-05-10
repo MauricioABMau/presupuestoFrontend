@@ -16,12 +16,13 @@ export class RegisterComponent implements OnInit {
 
   public registerForm = this.fb.group({
     //borrar
-
     nombre: ['', [Validators.required, Validators.minLength(3)]],
     apellido: ['', [Validators.required, Validators.minLength(3)]],
     email: ['', [Validators.required, Validators.email]],
+    rol: ['USER_ROLE', [Validators.required, Validators.email]],
     password: ['', Validators.required],
     password2: ['', Validators.required],
+    estado: [false , Validators.required],
     imagen: [null],
     termino: [false, Validators.required],
 
@@ -43,7 +44,8 @@ export class RegisterComponent implements OnInit {
     this.usuarioService.crearUsuario(this.registerForm.value)
       .subscribe(resp => {
         //Navegar al dashboard
-        this.router.navigateByUrl('/');
+        this.router.navigateByUrl('/login');
+        Swal.fire('Falta activar su cuenta', this.registerForm.get('nombre').value , 'success');
       }, (err) => {
         //Si sucede un error
         Swal.fire('Error', err.error.msg, 'error');

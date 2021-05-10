@@ -35,6 +35,7 @@
                                 <th>Nombre</th>
                                 <th class="w140">Role</th>
                                 <th class="w100">Auth</th>
+                                <th class="w150">Estado</th>
                                 <th class="text-nowrap w100">Acciones</th>
                             </tr>
                         </thead>
@@ -54,6 +55,13 @@
                                 <td>
                                     <span *ngIf="usuario.google" class="label label-danger">Google</span>
                                     <span *ngIf="!usuario.google" class="label label-info">Email</span>
+                                </td>
+
+                                <td>
+                                    <select class="form-control" [(ngModel)]="usuario.estado" (change)="cambiarEstado(usuario)">
+                                        <option  value=true >Activo</option>
+                                        <option  value=false >Desactivado</option>
+                                    </select>
                                 </td>
 
                                 <td class="text-nowrap text-center">

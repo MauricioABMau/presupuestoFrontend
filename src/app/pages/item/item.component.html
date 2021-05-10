@@ -45,12 +45,11 @@
                         <thead>
                             <tr>
                                 <th>Descripcion</th>
-                                <th>Unidad</th>
+                                <!-- <th>Unidad</th>
                                 <th>Cantidad </th>
-                                <th>Precio producto </th>
-                                <th>Herramienta</th>
-                                <th>Material</th>
-                                <th>Mano de obra</th>
+                                <th>Precio producto </th> -->
+                                <th></th>
+
                                 <th class="w100 text-nowrap">Acciones</th>
                             </tr>
                         </thead>
@@ -58,23 +57,25 @@
                             <tr *ngFor="let item of items">
 
                                 <td> {{item.descripcion}} </td>
-                                <td> {{item.unidad}} </td>
+                                <!-- <td> {{item.unidad}} </td>
                                 <td> {{item.cantidad}} </td>
-                                <td> {{item.precio_producto}} </td>
+                                <td> {{item.precio_producto}} </td> -->
                                 <td>
-                                    <a class="btn btn-right btn-primary" [routerLink]="['/dashboard/estimacionHerramientac/nuevo', item.id]">
-                                        <i class="fa fa-hospital-o"></i> Crear herramienta
-                                    </a>
-                                </td>
-                                <td>
-                                    <a class="btn btn-right btn-primary" [routerLink]="['/dashboard/estimacionMaterialc/nuevo', item.id]">
-                                        <i class="fa fa-hospital-o"></i> Crear material
-                                    </a>
-                                </td>
-                                <td>
-                                    <a class="btn btn-right btn-primary" [routerLink]="['/dashboard/estimacionManoObrac/nuevo', item.id]">
-                                        <i class="fa fa-hospital-o"></i> Crear mano de obra
-                                    </a>
+                                    <tr>
+                                        <a class="btn btn-right btn-primary" [routerLink]="['/dashboard/estimacionMaterialc/nuevo', item.id]">
+                                            <i class="fa fa-hospital-o"></i> Crear material
+                                        </a>
+                                    </tr>
+                                    <tr>
+                                        <a class="btn btn-right btn-primary" [routerLink]="['/dashboard/estimacionManoObrac/nuevo', item.id]">
+                                            <i class="fa fa-hospital-o"></i> Crear mano de obra
+                                        </a>
+                                    </tr>
+                                    <tr>
+                                        <a class="btn btn-right btn-primary" [routerLink]="['/dashboard/estimacionHerramientac/nuevo', item.id]">
+                                            <i class="fa fa-hospital-o"></i> Crear herramienta
+                                        </a>
+                                    </tr>
                                 </td>
 
                                 <td class="text-nowrap text-center">
