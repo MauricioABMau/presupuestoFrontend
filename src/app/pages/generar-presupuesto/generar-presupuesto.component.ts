@@ -13,6 +13,7 @@ import { HerramientaService } from '../../services/herramienta.service';
 import { ManoObraService } from '../../services/mano-obra.service';
 import { Herramienta } from '../../models/herramienta.model';
 import { ManoObra } from '../../models/manoObra.model';
+import { PdfService } from '../../services/pdf.service';
 
 @Component({
   selector: 'app-generar-presupuesto',
@@ -49,6 +50,7 @@ export class GenerarPresupuestoComponent implements OnInit {
   public precioMaterial: number[] = [];
   public precioHerramienta: number[] = [];
   
+  public preciosTotales: number[] = [];  
 
   constructor(private proyectoService: ProyectoService,
               private presupuestoService: PresupuestoService,
@@ -57,16 +59,16 @@ export class GenerarPresupuestoComponent implements OnInit {
               private materialService: MaterialService,
               private herramientaService: HerramientaService,
               private manoObraService: ManoObraService,
-              private activatedRoute: ActivatedRoute) { }
+              private activatedRoute: ActivatedRoute,
+              private pdfService: PdfService) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(({id}) => {
       this.idpro = id;
      })    
-     this.cargarPresupuesto();  
+     this.cargarPresupuesto();
   }
 
-  
   
   
   cargarPresupuesto() {   
@@ -80,9 +82,22 @@ export class GenerarPresupuestoComponent implements OnInit {
           this.presupuestos[0] = presupuesto[index];          
         }
         
-      }
+      }      
     })
   }
+
+  
+
+  generatePDF(presupuestos: Presupuesto[], materiales: Material[], precioMaterial: number[], totalMaterial: number, 
+            manoObra: ManoObra[], sueldo: number[], totalManoObra: number, cargaSocial: number, ivaMano: number, totalManoObra2: number, 
+            herramientas: Herramienta[], precioHerramienta: number[], totalHerramienta: number, total: number, totalGasto2: number[]) {
+       
+    this.pdfService.generatePDF(presupuestos, materiales, precioMaterial, totalMaterial,
+      manoObra, sueldo, totalManoObra, cargaSocial, ivaMano,
+      totalManoObra2, herramientas, precioHerramienta, totalHerramienta, this.total, this.totalGasto2)
+  }
+
+  
   
   cargarIdPre(presupuesto: Presupuesto[]): string {
     for (let index = 0; index < presupuesto.length; index++) {
@@ -120,8 +135,9 @@ export class GenerarPresupuestoComponent implements OnInit {
         } else {
           if(resp[index].presupuestoId === idpre){
             this.idg = resp[index].id
-            this.gastos.push(resp[index]);
-            this.total = this.calcularGasto(this.gastos);
+            this.gastos.push(resp[index]);          
+            this.total = this.calcularGasto(this.gastos);         
+            this.preciosTotales.push(this.total)
           }
         }
       }
@@ -150,7 +166,6 @@ export class GenerarPresupuestoComponent implements OnInit {
     var numero = 0, numero2, numero3;
     this.materialService.cargarMaterial()
     .subscribe( resp => {      
-     
       for (let index = 0; index < resp.length; index++) {
         if(resp[index].itemId === null) {
           console.log('error');
@@ -161,14 +176,13 @@ export class GenerarPresupuestoComponent implements OnInit {
           this.precioMaterial.push(numero2)
           this.totalMaterial = this.totalMaterial + (numero2);
           numero3 = Math.round(numero3 * 100) / 100;
-          this.materiales.push(resp[index]);
-          
+          this.materiales.push(resp[index]);          
         }        
       }
       this.totalMaterial = Math.round(this.totalMaterial * 100) / 100
       this.totalGasto2.push(this.totalMaterial);
-    })
-    
+      this.preciosTotales.push(this.totalMaterial);
+    })    
   }
   
   cargarHerramienta(idI: string) {
@@ -183,10 +197,13 @@ export class GenerarPresupuestoComponent implements OnInit {
           herramienta = (Number(resp[index].precio_herramienta) * Number(resp[index].cantidad_herramienta)) /1000;
           this.precioHerramienta.push(herramienta);
           this.totalHerramienta = Number(this.totalHerramienta) + herramienta;
+          console.log('herramienta');
+          console.log(this.totalHerramienta);
           this.herramientas.push(resp[index]);
         }        
       }
       this.totalHerramienta = Math.round((this.totalHerramienta + (this.totalManoObra2 * 0.05)) * 100) / 100;
+      this.preciosTotales.push(this.totalHerramienta);
       this.totalGasto2.push(this.totalHerramienta);
     })    
   }
@@ -211,9 +228,11 @@ export class GenerarPresupuestoComponent implements OnInit {
       this.totalManoObra2 = Math.round((this.totalManoObra + this.cargaSocial + this.ivaMano) * 100) / 100;
       
       this.totalGasto2.push(Math.round((this.totalManoObra2)*100)/100);
-    })
-    
-  }
 
+      this.preciosTotales.push(this.cargaSocial);
+      this.preciosTotales.push(this.totalManoObra2);
+      this.preciosTotales.push(this.ivaMano);
+    })    
+  }
 
 }

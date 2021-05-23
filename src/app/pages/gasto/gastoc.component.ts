@@ -63,7 +63,6 @@ export class GastocComponent implements OnInit {
         return this.router.navigateByUrl(`dashboard/gasto`)
       }
       const{lugar, profesional, documentos_legales, costo_garantia_contratos, costo_operacion, costo_administrativo, gasto_profecional_especial, riesgo_imprevisto, movilizacion_demolicion}  = gasto;
-      console.log(gasto);
       this.gastoSeleccionado = gasto;
       this.gastoForm.setValue({lugar, profesional, documentos_legales, costo_garantia_contratos, costo_operacion, costo_administrativo, gasto_profecional_especial, riesgo_imprevisto, movilizacion_demolicion})
     })
@@ -84,7 +83,6 @@ export class GastocComponent implements OnInit {
       
       this.gastoService.crearGasto(this.gastoForm.value, this.idpre)
       .subscribe((resp: any) => {
-        console.log(resp);
         Swal.fire('Creado', `${id} creado correctamente`, 'success');
         this.router.navigateByUrl(`dashboard/gastoc/${resp.gastoDB.id}`)
       })

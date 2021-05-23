@@ -55,7 +55,6 @@ export class GastoComponent implements OnInit {
 
     this.gastoService.cargarGasto()
     .subscribe(gasto => {
-      console.log(gasto);
       this.cargando = false;
       this.gastos = gasto;
     })
